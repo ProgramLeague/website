@@ -3,8 +3,12 @@
 > Build completed, no error(s) occurred.
 
 咋们是不是一直计划搭个网站的啊...
+## 依赖
+ - jQuery
+ - Vue.js
+ - Semantic UI
 
-## Build Setup
+## 构建步骤
 
 ``` bash
 # install dependencies

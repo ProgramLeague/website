@@ -102,12 +102,12 @@
   }
 
   .wrap-image {
+    float: right;
     bottom: 40px;
     width: 150px;
     height: 120px;
     overflow: hidden;
     max-height: 120px;
-    float: right;
   }
 
   .wrap-image img {

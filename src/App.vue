@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <NavBar/>
-    <div class="ui container">
+    <div class="ui container content">
+      <Slide :slides="slides" />
       <div class="ui vertical stripe segment">
         <ul class="article-cards">
           <ArticleCard v-for="articleCard in articleCards" :key="articleCard.id" :info="articleCard" />
@@ -13,24 +14,31 @@
 
 <style scoped>
   .article-cards {
+    display: block;
+    margin-left: 1.5%;
+    margin-right: 2.5%;
+    padding: 0;
     list-style: none;
-    margin-left: -20px
+    /* margin-left: -20px; */
   }
 
 </style>
 
 <script>
+  import Slide from './components/Slide'
   import NavBar from './components/NavBar'
   import ArticleCard from './components/ArticleCard'
 
   export default {
     name: 'App',
     components: {
+      Slide,
       NavBar,
       ArticleCard
     },
     data() {
       let nextCardId = 0
+      let nextSlideId = 0
       return {
         articleCards: [{
           id: nextCardId++,
@@ -56,7 +64,22 @@
             href: "/user/beta"
           },
           href: "https://bing.cn"
-        }]
+        }],
+        slides: [{
+            id: nextSlideId++,
+            title: "吃荔枝对身体有好处",
+            abstract: "强身健体。太棒啦！~",
+            img: "https://tse1-mm.cn.bing.net/th?id=OIP.3iTMNkANw-FFI-x8vJqD4wHaDF&p=0&o=5&pid=1.1",
+            href: "https://bing.com"
+          },
+          {
+            id: nextSlideId++,
+            title: "吃荔枝对身体有好处",
+            abstract: "这次绝对是真的。",
+            img: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
+            href: "https://bing.com"
+          }
+        ]
       }
     }
   }
