@@ -1,11 +1,13 @@
 <template>
-  <div class="ui large borderless menu">
-    <div class="header item">
-      <img src="http://www.semantic-ui.cn/images/logo.png">
-    </div>
-    <div class="ui container" id="header-items">
-      <a class="active item" href="/">首页</a>
-      <a class="item" v-for="item in items" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
+  <div class="outer">
+    <div class="ui large borderless menu slide-down">
+      <div class="header item">
+        <img src="http://www.semantic-ui.cn/images/logo.png">
+      </div>
+      <div class="ui container" id="header-items">
+        <a class="item active" href="/">首页</a>
+        <a class="item" v-for="item in items" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +21,17 @@
     font-size: 1.1em
   }
 
+  .slide-down {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1070;
+  }
+
+  .outer{
+    margin-bottom: 60px;
+  }
+
 </style>
 
 <style>
@@ -27,7 +40,6 @@
   }
 
 </style>
-
 
 <script>
   export default {

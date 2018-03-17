@@ -7,7 +7,8 @@
           <Slide :slides="slides" />
           <div class="ui vertical stripe segment">
             <ul class="article-cards">
-              <ArticleCard v-for="articleCard in articleCards" :key="articleCard._key" :info="articleCard" />
+              <ArticleCard v-for="articleCard in articleCards" :key="articleCard._key" :article="articleCard.article" :author="articleCard.author"
+              />
             </ul>
           </div>
         </div>
@@ -22,6 +23,10 @@
 </template>
 
 <style scoped>
+  .content {
+    padding-top: 30px !important;
+  }
+
   .article-cards {
     display: block;
     margin-left: 1.5%;
@@ -62,7 +67,8 @@
           author: {
             id: "alpha",
             nickname: "Alpha",
-            avatar: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg"
+            avatar: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
+            bio: "祈愿的碎片啊，请成为永恒的存在。"
           }
         }, {
           _key: nextCardId++,
@@ -77,6 +83,7 @@
             id: "beta",
             nickname: "Beta",
             avatar: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
+            bio: "祈愿的碎片啊，请成为永恒的存在。"
           }
         }],
         slides: [{

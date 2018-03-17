@@ -1,22 +1,23 @@
 <template>
   <li class="outer">
-    <router-link :to="info.article.uid" class="wrap-image">
-      <img :src="info.article.headerImg">
+    <router-link :to="article.uid" class="wrap-image">
+      <img :src="article.headerImg">
     </router-link>
 
     <div class="ui basic segment content">
-      <router-link :to="'/article/' + info.article.uid" class="title" target="_blank">
-        {{ info.article.title }}
+      <router-link :to="{ name: 'Article', params: { uid: article.uid }}" class="title" target="_blank" replace>
+        {{ article.title }}
       </router-link>
-      <p class="abstract">{{ info.article.abstract }}</p>
+      <p class="abstract">{{ article.abstract }}</p>
 
       <div class="author">
-        <router-link :to="'/user/' + info.author.id" class="avatar" target="_blank">
-          <img v-bind:src="info.author.avatar">
+        <router-link :to="'/user/' + author.id" class="avatar" target="_blank">
+          <img v-bind:src="author.avatar">
         </router-link>
         <div class="info">
-          <router-link :to="'/user/' + info.author.id" target="_blank">
-            <div class="nickname">{{ info.author.nickname }}</div>
+          <router-link :to="'/user/' + author.id" target="_blank">
+            <div class="nickname">{{ author.nickname }}</div>
+            <div class="bio">{{ author.bio }}</div>
           </router-link>
         </div>
       </div>
@@ -26,14 +27,14 @@
 
 <style scoped>
   .author {
-    height: 32px;
-    line-height: 32px;
+    height: 34px;
+    line-height: 34px;
   }
 
   .author .avatar,
-  img {
-    width: 32px;
-    height: 32px;
+  .author .avatar img {
+    width: 34px;
+    height: 34px;
   }
 
   .author .avatar img {
@@ -43,13 +44,20 @@
 
   .author .info {
     display: inline-block;
-    padding-left: 10px;
-    margin-top: -20px;
+    height: 100%;
+    margin-left: 6px;
+    margin-bottom: 34px;
+    line-height: 20px;
     vertical-align: middle
   }
 
   .author .info .nickname {
-    color: rgb(121, 121, 121)
+    color: black;
+    font-weight: 500
+  }
+
+  .author .info .bio {
+    color: rgba(0, 0, 0, 0.74)
   }
 
   .content {
@@ -108,7 +116,11 @@
 <script>
   export default {
     props: {
-      info: {
+      author: {
+        type: Object,
+        required: true
+      },
+      article: {
         type: Object,
         required: true
       }

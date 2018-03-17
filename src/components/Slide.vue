@@ -37,7 +37,6 @@
 
 <style scoped>
   .glide {
-    margin-top: 20px;
     height: auto
   }
 
@@ -48,13 +47,12 @@
     margin-right: 30px;
     border-radius: 6px;
     overflow: hidden;
-
     text-align: center;
   }
 
   .box img {
-    width: 100%;
     height: auto;
+    width: 100%;
     border-radius: 6px;
   }
 

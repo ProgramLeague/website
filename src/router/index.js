@@ -7,6 +7,7 @@ import Article from './Article.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [{
       path: '/',
       name: 'Home',
@@ -16,6 +17,11 @@ export default new Router({
       path: '/article/:uid',
       name: 'Article',
       component: Article
+    },
+    {
+      path: '/goods',
+      name: "Goods",
+      component: Home
     }
   ]
 })
