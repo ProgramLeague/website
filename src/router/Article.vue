@@ -44,16 +44,18 @@
 
   .header-img {
     text-align: center;
-    margin-top: -16px;
+    margin-top: -18px;
     margin-left: auto;
     margin-right: auto;
+    height: auto;
+    max-height: 440px;
+    overflow: hidden;
   }
 
   .header-img img {
     display: block;
     margin: 16px auto 0;
     width: 690px;
-    max-height: 620px
   }
 
   @media (max-width: 690px) {

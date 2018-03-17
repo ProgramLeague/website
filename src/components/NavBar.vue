@@ -26,9 +26,11 @@
     top: 0;
     width: 100%;
     z-index: 1070;
+    border-radius: 0 !important;
+    background-color: rgba(255, 255, 255, 0.92);
   }
 
-  .outer{
+  .outer {
     margin-bottom: 60px;
   }
 

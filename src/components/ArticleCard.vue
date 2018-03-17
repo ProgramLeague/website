@@ -1,15 +1,10 @@
 <template>
   <li class="outer">
-    <router-link :to="article.uid" class="wrap-image">
-      <img :src="article.headerImg">
-    </router-link>
+      <router-link :to="article.uid" v-if="article.headerImg" class="wrap-image">
+        <img :src="article.headerImg">
+      </router-link>
 
     <div class="ui basic segment content">
-      <router-link :to="{ name: 'Article', params: { uid: article.uid }}" class="title" target="_blank" replace>
-        {{ article.title }}
-      </router-link>
-      <p class="abstract">{{ article.abstract }}</p>
-
       <div class="author">
         <router-link :to="'/user/' + author.id" class="avatar" target="_blank">
           <img v-bind:src="author.avatar">
@@ -21,6 +16,11 @@
           </router-link>
         </div>
       </div>
+
+      <router-link :to="{ name: 'Article', params: { uid: article.uid }}" class="title" target="_blank" replace>
+        {{ article.title }}
+      </router-link>
+      <p class="abstract">{{ article.abstract }}</p>
     </div>
   </li>
 </template>
@@ -29,6 +29,7 @@
   .author {
     height: 34px;
     line-height: 34px;
+    margin-bottom: 20px;
   }
 
   .author .avatar,
@@ -68,9 +69,9 @@
   .content .title {
     color: #333;
     font-family: -apple-system, SF UI Display, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
-    font-size: 1.7em;
+    font-size: 1.8em;
     font-weight: bold;
-    line-height: 1.5;
+    line-height: 1.2;
   }
 
   .content .title:hover {
@@ -79,29 +80,31 @@
   }
 
   .content .abstract {
-    color: #333;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 15px;
+    line-height: 1.8;
     margin-top: 10px;
-    line-height: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;    
   }
 
   .outer {
     position: relative;
     width: 100%;
-    margin: 0 0 17px;
-    padding: 0 2px 17px 0;
-    border-bottom: 1px solid #f0f0f0;
+    margin-top: -20px;
+    margin-bottom: 6px;
     word-wrap: break-word;
   }
 
   .wrap-image {
     float: right;
-    bottom: 40px;
     width: 150px;
     height: 120px;
     overflow: hidden;
     max-height: 120px;
     border-radius: 4px;
     border: 1px solid #f0f0f0;
+    margin-top: 20px;
     margin-left: 5px
   }
 
