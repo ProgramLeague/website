@@ -14,8 +14,7 @@
         </div>
 
         <div class="four wide column">
-          <p>alpha</p>
-          <p>beta</p>
+          <StackList/>
         </div>
       </div>
     </div>
@@ -42,17 +41,18 @@
   import Slide from '../components/Slide.vue'
   import NavBar from '../components/NavBar'
   import ArticleCard from '../components/ArticleCard'
+  import StackList from '../components/StackList.vue'
 
   export default {
     name: 'Home',
     components: {
       Slide,
       NavBar,
-      ArticleCard
+      ArticleCard,
+      StackList
     },
     data() {
       let nextCardId = 0
-      let nextSlideId = 0
       return {
         articleCards: [{
           _key: nextCardId++,

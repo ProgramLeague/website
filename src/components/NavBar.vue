@@ -2,7 +2,7 @@
   <div class="outer">
     <div class="ui large borderless menu slide-down">
       <div class="header item">
-        <img src="http://www.semantic-ui.cn/images/logo.png">
+        <img src="../assets/logo.png">
       </div>
       <div class="ui container" id="header-items">
         <a class="item active" href="/">首页</a>
