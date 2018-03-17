@@ -1,43 +1,27 @@
 <template>
   <li class="outer">
-    <a class="wrap-image" v-bind:href="info.href">
-      <img v-bind:src="info.headerImg">
-    </a>
+    <router-link :to="info.article.uid" class="wrap-image">
+      <img :src="info.article.headerImg">
+    </router-link>
 
     <div class="ui basic segment content">
-      <a class="title" target="_blank" v-bind:href="info.href">{{ info.title }}</a>
-      <p class="abstract">{{ info.abstract }}</p>
+      <router-link :to="'/article/' + info.article.uid" class="title" target="_blank">
+        {{ info.article.title }}
+      </router-link>
+      <p class="abstract">{{ info.article.abstract }}</p>
 
       <div class="author">
-        <a class="avatar" v-bind:href="info.author.href">
+        <router-link :to="'/user/' + info.author.id" class="avatar" target="_blank">
           <img v-bind:src="info.author.avatar">
-        </a>
+        </router-link>
         <div class="info">
-          <div class="id">{{ info.author.id }}</div>
+          <router-link :to="'/user/' + info.author.id" target="_blank">
+            <div class="nickname">{{ info.author.nickname }}</div>
+          </router-link>
         </div>
       </div>
     </div>
   </li>
-  <!-- <div class="ui card fluid borderless">
-    <a class="image" >
-      
-    </a>
-    <div class="content">
-    <a class="header" v-bind:href="info.href"><h1>{{ info.title }}</h1></a>
-
-      <div class="meta">
-        <span class="category">{{ info.category.join(' ') }}</span>
-      </div>
-      <div class="description">
-        {{ info.description }}
-      </div>
-    </div>
-    <div class="extra content">
-      <div class="right floated author">
-        <img class="ui avatar image" v-bind:src="info.author.avatar">{{ info.author.id }}
-      </div>
-    </div>
-  </div> -->
 </template>
 
 <style scoped>
@@ -64,7 +48,7 @@
     vertical-align: middle
   }
 
-  .author .info .id {
+  .author .info .nickname {
     color: rgb(121, 121, 121)
   }
 
@@ -81,7 +65,7 @@
     line-height: 1.5;
   }
 
-  .content .title:hover{
+  .content .title:hover {
     color: var(--theme-color);
     text-decoration: underline
   }
@@ -108,14 +92,15 @@
     height: 120px;
     overflow: hidden;
     max-height: 120px;
+    border-radius: 4px;
+    border: 1px solid #f0f0f0;
+    margin-left: 5px
   }
 
   .wrap-image img {
     width: auto;
     height: auto;
     max-height: 120px;
-    border-radius: 4px;
-    border: 1px solid #f0f0f0;
   }
 
 </style>

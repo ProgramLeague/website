@@ -12,19 +12,19 @@
 
     <div class="glide__wrapper">
       <ul class="glide__track">
-        <div class="glide__slide" v-for="slide in slides" :key="slide.id">
+        <div class="glide__slide" v-for="slide in slides" :key="slide._key">
           <div class="box" style="background-color: #34B67A;">
-            <a :href="slide.href">
-              <img :src="slide.img">
+            <router-link :to="/article/ + slide.slide.articleUid" target="_blank">
+              <img :src="slide.slide.img">
               <div class="info">
                 <div class="title">
-                  {{ slide.title }}
+                  {{ slide.slide.title }}
                 </div>
                 <div class="abstract">
-                  {{ slide.abstract }}
+                  {{ slide.slide.abstract }}
                 </div>
               </div>
-            </a>
+            </router-link>
           </div>
         </div>
       </ul>
@@ -36,12 +36,18 @@
 </template>
 
 <style scoped>
+  .glide {
+    margin-top: 20px;
+    height: auto
+  }
+
   .box {
     color: #fff;
     height: 350px;
     margin-left: 30px;
     margin-right: 30px;
     border-radius: 6px;
+    overflow: hidden;
 
     text-align: center;
   }
@@ -49,6 +55,7 @@
   .box img {
     width: 100%;
     height: auto;
+    border-radius: 6px;
   }
 
   .box .info {
@@ -76,16 +83,35 @@
 
 <script>
   export default {
-    props: {
-      slides: {
-        type: Array,
-        required: true
-      }
-    },
     mounted: function () {
       $("#Glide").glide({
         type: "carousel"
       })
+    },
+    data() {
+      let nextSlideId = 0
+      return {
+        slides: [{
+            _key: nextSlideId++,
+            slide: {
+              articleUid: 9347,
+              title: "吃荔枝对身体有好处",
+              abstract: "强身健体。太棒啦！~",
+              img: "https://tse1-mm.cn.bing.net/th?id=OIP.3iTMNkANw-FFI-x8vJqD4wHaDF&p=0&o=5&pid=1.1",
+            }
+          },
+          {
+            _key: nextSlideId++,
+            slide: {
+              articleUid: 12353,
+              title: "吃荔枝对身体有好处",
+              abstract: "这次绝对是真的。",
+              img: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
+              uid: 12323
+            }
+          }
+        ]
+      }
     }
   }
 

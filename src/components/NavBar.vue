@@ -5,7 +5,7 @@
     </div>
     <div class="ui container" id="header-items">
       <a class="active item" href="/">首页</a>
-      <a class="item" v-for="item in items" :key="item.id" v-bind:href="item.href">{{ item.content }}</a>
+      <a class="item" v-for="item in items" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
     </div>
   </div>
 </template>
@@ -15,8 +15,8 @@
     color: var(--theme-color)
   }
 
-  #header-items a{
-   font-size: 1.1em
+  #header-items a {
+    font-size: 1.1em
   }
 
 </style>
@@ -35,13 +35,17 @@
       let itemId = 0
       return {
         items: [{
-          id: itemId++,
-          href: "alpha",
-          content: "精选"
+          _key: itemId++,
+          item: {
+            href: "/goods",
+            content: "精选"
+          }
         }, {
-          id: itemId++,
-          href: "beta",
-          content: "关于"
+          _key: itemId++,
+          item: {
+            href: "/about",
+            content: "关于"
+          }
         }]
       }
     }

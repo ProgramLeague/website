@@ -7,6 +7,8 @@
  - jQuery
  - Vue.js
  - Semantic UI
+ - Glide
+ - Font Awesome
 
 ## 构建步骤
 
