@@ -5,9 +5,9 @@
 咋们是不是一直计划搭个网站的啊...
 ## 依赖
  - jQuery
- - Vue.js
+ - Vue.js 
  - Semantic UI
- - Glide
+ - Swiper
  - Font Awesome
 
 ## 构建步骤

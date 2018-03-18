@@ -14,7 +14,8 @@
         </div>
 
         <div class="four wide column">
-          <StackList/>
+          <h1>技术栈</h1>
+          <StackList class="stack-list" />
         </div>
       </div>
     </div>
@@ -24,6 +25,10 @@
 <style scoped>
   .content {
     padding-top: 30px !important;
+  }
+
+  .stack-list {
+    margin-top: -10px
   }
 
   .article-cards {
