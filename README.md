@@ -1,7 +1,10 @@
 # NoErrors(s) [![Build Status](https://travis-ci.org/ProgramLeague/website.svg?branch=master&style=flat-square)](https://travis-ci.org/ProgramLeague/website)
 
-
 > Build completed, no error(s) occurred.
+
+![屏幕截图](https://raw.githubusercontent.com/ProgramLeague/website/master/img/261aea9a-0598-455c-867d-411afe83b063.jpg)
+
+> 屏幕截图可能不是最新版本，建议自行克隆后使用`npm run dev`查看。
 
 咋们是不是一直计划搭个网站的啊...
 ## 依赖
