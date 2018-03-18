@@ -1,4 +1,5 @@
-# NoErrors(s)
+# NoErrors(s) [![Build Status](https://travis-ci.org/ProgramLeague/website.svg?branch=master&style=flat-square)](https://travis-ci.org/ProgramLeague/website)
+
 
 > Build completed, no error(s) occurred.
 

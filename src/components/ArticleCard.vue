@@ -1,10 +1,10 @@
 <template>
   <li class="outer">
-      <router-link :to="article.uid" v-if="article.headerImg" class="wrap-image">
-        <img :src="article.headerImg">
-      </router-link>
+    <router-link :to="article.uid" v-if="article.headerImg" class="wrap-image">
+      <img :src="article.headerImg">
+    </router-link>
 
-    <div class="ui basic segment content">
+    <div class="ui basic segment card-content">
       <div class="author">
         <router-link :to="'/user/' + author.id" class="avatar" target="_blank">
           <img v-bind:src="author.avatar">
@@ -61,12 +61,25 @@
     color: rgba(0, 0, 0, 0.74)
   }
 
-  .content {
+  @media(max-width: 767px) {
+    .author .info .bio {
+      display: none;
+    }
+
+    .author .info .nickname {
+      color: black;
+      font-size: 1.2em;
+      font-weight: 300;
+      margin-top: 11px;
+    }
+  }
+
+  .card-content {
     width: 100%;
     height: 100%;
   }
 
-  .content .title {
+  .card-content .title {
     color: #333;
     font-family: -apple-system, SF UI Display, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
     font-size: 1.8em;
@@ -74,26 +87,34 @@
     line-height: 1.2;
   }
 
-  .content .title:hover {
+  .card-content .title:hover {
     color: var(--theme-color);
     text-decoration: underline
   }
 
-  .content .abstract {
+  .card-content .abstract {
     color: rgba(0, 0, 0, 0.75);
     font-size: 15px;
     line-height: 1.8;
     margin-top: 10px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #f0f0f0;    
   }
 
   .outer {
     position: relative;
     width: 100%;
-    margin-top: -20px;
+    margin-top: 20px;
     margin-bottom: 6px;
     word-wrap: break-word;
+
+    border: 0;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.14);
+    opacity: 0.8;
+  }
+
+  .outer:hover {
+    opacity: 1;
+    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   }
 
   .wrap-image {
@@ -105,7 +126,8 @@
     border-radius: 4px;
     border: 1px solid #f0f0f0;
     margin-top: 20px;
-    margin-left: 5px
+    margin-left: 5px;
+    margin-right: 20px
   }
 
   .wrap-image img {

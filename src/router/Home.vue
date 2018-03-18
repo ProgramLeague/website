@@ -3,7 +3,7 @@
     <NavBar/>
     <Slide/>
     <div class="ui container content">
-      <div class="ui two column grid">
+      <div class="ui two column stackable grid">
         <div class="twelve wide column">
           <div class="ui vertical stripe segment">
             <ul class="article-cards">
@@ -13,12 +13,13 @@
           </div>
         </div>
 
-        <div class="four wide column">
+        <div id="stacks" class="four wide column">
           <h1>技术栈</h1>
           <StackList class="stack-list" />
         </div>
       </div>
     </div>
+    <Footer/>
   </div>
 </template>
 
@@ -29,6 +30,12 @@
 
   .stack-list {
     margin-top: -10px
+  }
+
+  @media(max-width: 767px) {
+    #stacks {
+      display: none;
+    }
   }
 
   .article-cards {
@@ -45,6 +52,7 @@
 <script>
   import Slide from '../components/Slide.vue'
   import NavBar from '../components/NavBar'
+  import Footer from '../components/Footer.vue'
   import ArticleCard from '../components/ArticleCard'
   import StackList from '../components/StackList.vue'
 
@@ -54,7 +62,8 @@
       Slide,
       NavBar,
       ArticleCard,
-      StackList
+      StackList,
+      Footer
     },
     data() {
       let nextCardId = 0

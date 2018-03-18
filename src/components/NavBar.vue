@@ -1,12 +1,17 @@
 <template>
   <div class="outer">
-    <div class="ui large borderless menu slide-down">
+    <div class="ui stackable top fixed large borderless menu nav">
       <div class="header item">
         <img src="../assets/logo.png">
       </div>
       <div class="ui container" id="header-items">
         <a class="item active" href="/">首页</a>
         <a class="item" v-for="item in items" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
+      </div>
+      <div class="ui container">
+        <div class="item">
+          <StackList id="nav-stack-list" />
+        </div>
       </div>
     </div>
   </div>
@@ -21,13 +26,23 @@
     font-size: 1.1em
   }
 
-  .slide-down {
-    position: fixed;
-    top: 0;
-    width: 100%;
+  #nav-stack-list {
+    display: none
+  }
+
+  @media(max-width: 767px) {
+    #nav-stack-list {
+      display: block;
+      width: 100% !important;
+    }
+  }
+
+  .nav {
     z-index: 1070;
     border-radius: 0 !important;
     background-color: rgba(255, 255, 255, 0.92);
+
+    border-bottom: 3px solid var(--theme-color)
   }
 
   .outer {
@@ -44,6 +59,7 @@
 </style>
 
 <script>
+  import StackList from '../components/StackList'
   export default {
     data() {
       let itemId = 0
@@ -62,6 +78,9 @@
           }
         }]
       }
+    },
+    components: {
+      StackList
     }
   }
 

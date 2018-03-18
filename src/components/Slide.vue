@@ -51,7 +51,8 @@
 
   .swiper-container {
     margin-top: -2px;
-    height: 420px;
+    height: auto;
+    max-height: 420px;
   }
 
   .swiper-pagination-bullet-active {
@@ -76,7 +77,7 @@
   }
 
   .box img {
-    height: auto;
+    height: 100%;
     width: 100%;
   }
 
