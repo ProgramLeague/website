@@ -1,7 +1,7 @@
 <template>
   <li class="outer">
-    <router-link :to="article.uid" v-if="article.headerImg" class="wrap-image">
-      <img :src="article.headerImg">
+    <router-link :to="'/article/' + article.uid" v-if="article.headerImg" class="wrap-image" replace>
+      <img :src="article.headerImg" :alt="article.title">
     </router-link>
 
     <div class="ui basic segment card-content">
@@ -109,7 +109,7 @@
     border: 0;
     border-radius: 6px;
     box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.14);
-    opacity: 0.8;
+    opacity: 0.86;
   }
 
   .outer:hover {

@@ -4,6 +4,7 @@
       <div class="header item">
         <img src="../assets/logo.png">
       </div>
+
       <div class="ui container" id="header-items">
         <a class="item active" href="/">首页</a>
         <a class="item" v-for="item in items" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
@@ -18,6 +19,10 @@
 </template>
 
 <style scoped>
+  .nav .header {
+    padding-right: 64px;
+  }
+
   #header-items .active {
     color: var(--theme-color)
   }
