@@ -89,13 +89,6 @@
 
 </style>
 
-<style>
-  :root {
-    --theme-color: rgb(88, 133, 255)
-  }
-
-</style>
-
 <script>
   import StackList from '../components/StackList'
   export default {

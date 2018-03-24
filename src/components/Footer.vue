@@ -19,7 +19,8 @@
 <style scoped>
   .footer {
     width: 100%;
-    height: 200px;
+    height: 260px;
+    margin-top: 70px;
     text-align: center;
     color: white;
     background-color: rgb(112, 112, 113);
@@ -60,7 +61,7 @@
     color: rgba(255, 255, 255, 0.5);
     height: 26px;
     line-height: 26px;
-    margin-top: 50px;
+    margin-top: 114px;
     margin-bottom: 0;
   }
 

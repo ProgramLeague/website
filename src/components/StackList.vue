@@ -25,7 +25,7 @@
     height: 40px;
     width: 100%;
     border-radius: 6px;
-    margin-top: 8px;
+    margin-top: 12px;
 
     border: 0;
     box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.4);
@@ -54,20 +54,28 @@
   }
 
   .stack-item .description {
-    font-size: 1em;
     float: right;
+    font-size: 15px;
     color: white;
     margin-top: -30px;
     margin-right: 10px;
+    font-weight: 300;
+  }
+
+  .stack-item .description span {
+    width: 140px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   @media(max-width: 1140px) {
     .stack-item .description {
-      font-size: .8em;
+      font-size: 13px;
     }
   }
 
-  @media(max-width: 995px) {
+  @media(max-width: 991px) {
     .stack-item .description {
       display: none;
     }
@@ -107,7 +115,7 @@
             _key: nextStackId++,
             uid: 2,
             name: "Kotlin",
-            description: "更好的Java和的Scala",
+            description: "更好的Java",
             icon: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
             color: "skyblue"
           },

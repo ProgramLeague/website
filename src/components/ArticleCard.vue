@@ -20,7 +20,7 @@
       <router-link :to="{ name: 'Article', params: { uid: article.uid }}" class="title" target="_blank" replace>
         {{ article.title }}
       </router-link>
-      <p class="abstract">{{ article.abstract }}</p>
+      <p class="abstract to-truncate">{{ article.abstract }}</p>
     </div>
   </li>
 </template>
@@ -77,12 +77,14 @@
   .card-content {
     width: 100%;
     height: 100%;
+    margin-top: -10px;
+    padding-bottom: 20px;
   }
 
   .card-content .title {
     color: #333;
     font-family: -apple-system, SF UI Display, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
-    font-size: 1.8em;
+    font-size: 23px;
     font-weight: bold;
     line-height: 1.2;
   }
@@ -93,10 +95,14 @@
   }
 
   .card-content .abstract {
-    color: rgba(0, 0, 0, 0.75);
-    font-size: 15px;
+    height: 100%;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
     line-height: 1.8;
-    margin-top: 10px;
+    margin-top: 8px;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .outer {
@@ -106,26 +112,19 @@
     margin-bottom: 6px;
     word-wrap: break-word;
 
-    border: 0;
+    border-bottom: 1px solid #e6e6e6;
     border-radius: 6px;
-    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.14);
-    opacity: 0.9;
-  }
-
-  .outer:hover {
-    opacity: 1;
-    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   }
 
   .wrap-image {
     float: right;
-    width: 150px;
+    width: 160px;
     height: 120px;
     overflow: hidden;
     max-height: 120px;
     border-radius: 4px;
     border: 1px solid #f0f0f0;
-    margin-top: 20px;
+    margin-top: 70px;
     margin-left: 5px;
     margin-right: 20px
   }
@@ -149,6 +148,30 @@
         type: Object,
         required: true
       }
+    },
+    mounted: function () {
+      $(".to-truncate").dotdotdot({
+        callback: function () {},
+        /* Function invoked after truncating the text.
+           Inside this function, "this" refers to the wrapper. */
+        ellipsis: "\u2026 ",
+        /* The text to add as ellipsis. */
+        height: 100,
+        /* The (max-)height for the wrapper:
+           null: measure the CSS (max-)height ones;
+           a number: sets a specific height in pixels;
+           "watch": re-measures the CSS (max-)height in the "watch". */
+        keep: $(".to-truncate"),
+        /* jQuery-selector for elements to keep after the ellipsis. */
+        tolerance: 0,
+        /* Deviation for the measured wrapper height. */
+        truncate: "letter",
+        /* How to truncate the text: By "node", "word" or "letter". */
+        watch: "window",
+        /* Whether to update the ellipsis: 
+           true: Monitors the wrapper width and height;
+           "window": Monitors the window width and height. */
+      })
     }
   }
 
