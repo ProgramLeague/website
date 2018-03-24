@@ -16,20 +16,13 @@
         <div id="stacks" class="four wide column">
           <p class="function-name">技术栈</p>
           <StackList id="stack-list" />
+          <p class="function-name">热门评论</p>
         </div>
       </div>
     </div>
     <Footer/>
   </div>
 </template>
-
-<style>
-  :root {
-    --theme-color: rgb(88, 133, 255);
-    --theme-color-light: rgb(227, 235, 255);
-  }
-
-</style>
 
 <style scoped>
   #stack-list {

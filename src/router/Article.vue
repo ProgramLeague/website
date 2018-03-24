@@ -46,7 +46,7 @@
 
   .header-img {
     text-align: center;
-    margin-top: -18px;
+    margin-top: -19px;
     margin-left: auto;
     margin-right: auto;
     height: auto;

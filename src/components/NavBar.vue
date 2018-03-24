@@ -2,24 +2,29 @@
   <div class="outer">
     <div class="ui top fixed large borderless menu nav">
       <div class="header item">
-          <img src="../assets/logo.png">
+        <img src="../assets/logo.png">
       </div>
 
       <div class="ui container" id="header-items">
-        <a class="item active" href="/">首页</a>
-        <a class="item" v-for="item in items" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
+        <a class="item" v-for="item in items" :class="{ active: isThisPage(item.item.href) }" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
       </div>
 
       <div class="icon right menu">
-        <a id="nav-sidebar-button" class="item">
+        <div class="item" id="nav-search">
+          <div class="ui icon input">
+            <input type="text" placeholder="搜索...">
+            <i class="search link icon"></i>
+          </div>
+        </div>
+
+        <a class="item" id="nav-sidebar-button">
           <i class="big content icon"></i>
         </a>
       </div>
     </div>
 
-    <div class="ui right big sidebar inverted vertical menu" id="nav-sidebar">
-      <a class="item active" href="/">首页</a>
-      <a class="item" v-for="item in items" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
+    <div class="ui right big sidebar vertical menu" id="nav-sidebar">
+      <a class="item" v-for="item in items" :class="{ active: isThisPage(item.item.href) }" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
 
       <a class="item">
         技术栈
@@ -29,6 +34,13 @@
           </div>
         </div>
       </a>
+
+      <div class="item">
+        <div class="ui icon input" id="nav-sidebar-search">
+          <input type="text" placeholder="搜索...">
+          <i class="search link icon"></i>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -46,15 +58,32 @@
   }
 
   #header-items .active {
-    color: var(--theme-color)
+    color: var(--theme-color);
   }
 
   #header-items a {
     font-size: 1.1em
   }
 
+  #nav-sidebar {
+    opacity: .9;
+    background-color: var(--theme-color);
+  }
+
+  #nav-sidebar .item {
+    color: white
+  }
+
+  #nav-sidebar .active {
+    font-weight: 600;
+  }
+
   #nav-sidebar .item:hover {
-    background-color: var(--theme-color)
+    opacity: 1;
+  }
+
+  #nav-sidebar #nav-sidebar-search {
+    opacity: .8;
   }
 
   #nav-sidebar-button {
@@ -71,6 +100,10 @@
     }
 
     #header-items a {
+      display: none
+    }
+
+    #nav-search {
       display: none
     }
   }
@@ -98,6 +131,12 @@
         items: [{
           _key: itemId++,
           item: {
+            href: "/",
+            content: "首页"
+          }
+        }, {
+          _key: itemId++,
+          item: {
             href: "/goods",
             content: "精选"
           }
@@ -108,6 +147,15 @@
             content: "关于"
           }
         }]
+      }
+    },
+    methods: {
+      isThisPage: function (href) {
+        let thisName = "/" + window.location.href
+          .replace(window.location.protocol + "//", "")
+          .replace(window.location.host, "")
+          .split("/")[1]
+        return thisName === href
       }
     },
     mounted: function () {
