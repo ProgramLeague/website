@@ -24,6 +24,8 @@
         <div id="article-markdown" class="ui basic segment aligned" v-html="article.content"></div>
       </div>
     </div>
+
+    <Footer/>
   </div>
 </template>
 
@@ -120,10 +122,13 @@
 
 <script>
   import NavBar from '../components/NavBar'
+  import Footer from '../components/Footer'
+
   export default {
     name: 'Article',
     components: {
-      NavBar
+      NavBar,
+      Footer
     },
     data() {
       return {

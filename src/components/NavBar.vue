@@ -1,19 +1,34 @@
 <template>
   <div class="outer">
-    <div class="ui stackable top fixed large borderless menu nav">
+    <div class="ui top fixed large borderless menu nav">
       <div class="header item">
-        <img src="../assets/logo.png">
+          <img src="../assets/logo.png">
       </div>
 
       <div class="ui container" id="header-items">
         <a class="item active" href="/">首页</a>
         <a class="item" v-for="item in items" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
       </div>
-      <div class="ui container">
-        <div class="item">
-          <StackList id="nav-stack-list" />
-        </div>
+
+      <div class="icon right menu">
+        <a id="nav-sidebar-button" class="item">
+          <i class="big content icon"></i>
+        </a>
       </div>
+    </div>
+
+    <div class="ui right big sidebar inverted vertical menu" id="nav-sidebar">
+      <a class="item active" href="/">首页</a>
+      <a class="item" v-for="item in items" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
+
+      <a class="item">
+        技术栈
+        <div class="ui container">
+          <div id="nav-stack-list">
+            <StackList/>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </template>
@@ -21,6 +36,13 @@
 <style scoped>
   .nav .header {
     padding-right: 64px;
+  }
+
+  #nav-stack-list {
+    margin-top: 20px;
+    width: 246px;
+    margin-left: -15px;
+    margin-right: auto;
   }
 
   #header-items .active {
@@ -31,14 +53,25 @@
     font-size: 1.1em
   }
 
-  #nav-stack-list {
+  #nav-sidebar .item:hover {
+    background-color: var(--theme-color)
+  }
+
+  #nav-sidebar-button {
     display: none
   }
 
   @media(max-width: 767px) {
-    #nav-stack-list {
+    #nav-sidebar-button {
       display: block;
-      width: 100% !important;
+    }
+
+    #nav-sidebar-button:hover {
+      color: var(--theme-color)
+    }
+
+    #header-items a {
+      display: none
     }
   }
 
@@ -83,6 +116,14 @@
           }
         }]
       }
+    },
+    mounted: function () {
+      $("#nav-sidebar-button").click(function () {
+        // showing multiple
+        $('#nav-sidebar')
+          .sidebar('setting', 'transition', 'overlay')
+          .sidebar('toggle');
+      })
     },
     components: {
       StackList

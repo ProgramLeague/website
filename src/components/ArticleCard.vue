@@ -109,7 +109,7 @@
     border: 0;
     border-radius: 6px;
     box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.14);
-    opacity: 0.86;
+    opacity: 0.9;
   }
 
   .outer:hover {
