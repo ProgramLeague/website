@@ -1,7 +1,7 @@
 <template>
   <div class="this-content">
     <div v-for="stack in stacks" :key="stack._key" :style="{ backgroundColor: stack.color }" class="stack-item">
-      <router-link :to="'/stack/' + stack.uid" target="_blank">
+      <router-link :to="'/stack/' + stack.id" target="_blank">
         <div>
           <img class="icon" :src="stack.icon">
         </div>
@@ -98,6 +98,7 @@
         stacks: [{
             _key: nextStackId++,
             uid: 0,
+            id: "java",
             name: "Java",
             description: "广泛使用的后端语言",
             icon: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
@@ -106,6 +107,7 @@
           {
             _key: nextStackId++,
             uid: 1,
+            id: "scala",
             name: "Scala",
             description: "驱动大数据",
             icon: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
@@ -114,6 +116,7 @@
           {
             _key: nextStackId++,
             uid: 2,
+            ud: "kotlin",
             name: "Kotlin",
             description: "更好的Java",
             icon: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
@@ -122,6 +125,7 @@
           {
             _key: nextStackId++,
             uid: 3,
+            id: "haskell",
             name: "Haskell",
             description: "拉丁语般",
             icon: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",

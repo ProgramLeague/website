@@ -129,24 +129,32 @@
       let itemId = 0
       return {
         items: [{
-          _key: itemId++,
-          item: {
-            href: "/",
-            content: "首页"
+            _key: itemId++,
+            item: {
+              href: "/",
+              content: "首页"
+            }
+          }, {
+            _key: itemId++,
+            item: {
+              href: "/goods",
+              content: "精选"
+            }
+          }, {
+            _key: itemId++,
+            item: {
+              href: "/stack",
+              content: "技术栈"
+            }
+          },
+          {
+            _key: itemId++,
+            item: {
+              href: "/about",
+              content: "关于"
+            }
           }
-        }, {
-          _key: itemId++,
-          item: {
-            href: "/goods",
-            content: "精选"
-          }
-        }, {
-          _key: itemId++,
-          item: {
-            href: "/about",
-            content: "关于"
-          }
-        }]
+        ]
       }
     },
     methods: {

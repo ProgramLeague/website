@@ -14,9 +14,17 @@
         </div>
 
         <div id="stacks" class="four wide column">
-          <p class="function-name">技术栈</p>
-          <StackList id="stack-list" />
-          <p class="function-name">热门评论</p>
+          <div>
+            <div>
+              <span class="function-name">技术栈</span>
+              <a class="function-more" target="_blank" href="">更多 >></a>
+            </div>
+            <StackList id="stack-list" />
+          </div>
+
+          <div>
+            <p class="function-name">热门评论</p>
+          </div>
         </div>
       </div>
     </div>
@@ -37,6 +45,17 @@
     color: rgba(0, 0, 0, 0.6);
     font-size: 1.3em;
     font-weight: 500;
+  }
+
+  .function-more {
+    float: right;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1.1em;
+    font-weight: 400;
+  }
+
+  .function-more:hover {
+    color: rgba(0, 0, 0, 0.7);
   }
 
   @media(max-width: 767px) {

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from './Home.vue'
 import Article from './Article.vue'
+import Stack from './Stack.vue'
 
 Vue.use(Router)
 
@@ -20,8 +21,13 @@ export default new Router({
     },
     {
       path: '/goods',
-      name: "Goods",
+      name: 'Goods',
       component: Home
+    },
+    {
+      path: '/stack/:id',
+      name: 'Stack',
+      component: Stack
     }
   ]
 })
