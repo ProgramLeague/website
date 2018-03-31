@@ -12,7 +12,7 @@
       </div>
 
       <div id="article-list" class="ui vertical stripe segment content">
-        <p class="function-name narrow-hidden">最新文章</p>
+        <!-- 显示问题。 <span class="function-name narrow-hidden">最新文章</span> -->
         <div id="article-cards" class="ui three column stackable grid">
           <ArticleCard class="five wide column" v-for="articleCard in articleCards" :key="articleCard._key" :article="articleCard.article"
             :author="articleCard.author" />
@@ -58,6 +58,8 @@
     color: rgba(0, 0, 0, 0.5);
     font-size: 18px;
     font-weight: 400;
+    height: 30px;
+    line-height: 30px;
   }
 
   .function-more:hover {
