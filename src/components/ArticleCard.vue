@@ -1,67 +1,93 @@
 <template>
-  <li class="outer">
-    <router-link :to="'/article/' + article.uid" v-if="article.headerImg" class="wrap-image" replace>
-      <img :src="article.headerImg" :alt="article.title">
-    </router-link>
-
-    <div class="ui basic segment card-content">
-      <div class="author">
-        <router-link :to="'/user/' + author.id" class="avatar" target="_blank">
-          <img v-bind:src="author.avatar">
+  <div class="outer">
+    <div class="card-content">
+      <div class="image">
+        <router-link class="image" :to="{ name: 'Article', params: { uid: article.uid }}" v-if="article.headerImg" replace>
+          <img :src="article.headerImg" :alt="article.title">
         </router-link>
-        <div class="info">
-          <router-link :to="'/user/' + author.id" target="_blank">
-            <div class="nickname">{{ author.nickname }}</div>
-            <div class="bio">{{ author.bio }}</div>
-          </router-link>
-        </div>
       </div>
 
-      <router-link :to="{ name: 'Article', params: { uid: article.uid }}" class="title" target="_blank" replace>
-        {{ article.title }}
-      </router-link>
-      <p class="abstract to-truncate">{{ article.abstract }}</p>
+      <div class="text">
+        <div class="title">
+          <router-link class="title" :to="{ name: 'Article', params: { uid: article.uid }}" target="_blank" replace>
+            {{ article.title }}
+          </router-link>
+        </div>
+        <p class="abstract to-truncate-80">{{ article.abstract }}</p>
+      </div>
+
+      <div class="author">
+        <router-link :to="'/user/' + author.id" target="_blank">
+          <div class="avatar">
+            <img v-bind:src="author.avatar">
+          </div>
+          <div class="info">
+            <div class="nickname">{{ author.nickname }}</div>
+            <div class="bio">{{ author.bio }}</div>
+          </div>
+        </router-link>
+      </div>
     </div>
-  </li>
+  </div>
 </template>
 
 <style scoped>
+  .outer {
+    overflow: hidden;
+    width: 320px;
+    height: 364px;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    margin-right: 16px;
+
+    border: 1px solid rgba(0, 0, 0, .05);
+    border-radius: 3px;
+  }
+
+  .outer:hover {
+    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.1);
+  }
+
   .author {
-    height: 34px;
-    line-height: 34px;
-    margin-bottom: 20px;
+    position: absolute;
+    bottom: 10px;
+    height: 32px;
   }
 
-  .author .avatar,
-  .author .avatar img {
-    width: 34px;
-    height: 34px;
+  .author .avatar {
+    width: 32px;
+    height: 32px;
   }
 
   .author .avatar img {
-    border: 1px solid #ddd;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
+    margin-bottom: 4px;
   }
 
   .author .info {
-    display: inline-block;
-    height: 100%;
-    margin-left: 6px;
-    margin-bottom: 34px;
+    position: absolute;
+    left: 36px;
+    bottom: -4px;
     line-height: 20px;
-    vertical-align: middle
+  }
+
+  .author .info * {
+    white-space: nowrap;
   }
 
   .author .info .nickname {
     color: black;
-    font-weight: 500
+    font-weight: 500;
   }
 
   .author .info .bio {
-    color: rgba(0, 0, 0, 0.74)
+    color: rgba(0, 0, 0, 0.74);
   }
 
   @media(max-width: 767px) {
+
     .author .info .bio {
       display: none;
     }
@@ -70,69 +96,57 @@
       color: black;
       font-size: 1.2em;
       font-weight: 300;
-      margin-top: 11px;
+      line-height: 36px;
+      margin-left: 4px;
     }
   }
 
-  .card-content {
-    width: 100%;
-    height: 100%;
-    margin-top: -10px;
-    padding-bottom: 20px;
+  .card-content .text {
+    position: relative;
+    top: 180px;
   }
 
-  .card-content .title {
+  .card-content .text .title {
     color: #333;
     font-family: -apple-system, SF UI Display, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
     font-size: 23px;
     font-weight: bold;
     line-height: 1.2;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .card-content .title:hover {
+  .card-content .text .title:hover {
     color: var(--theme-color);
     text-decoration: underline
   }
 
-  .card-content .abstract {
+  .card-content .text .abstract {
+    width: 100%;
     height: 100%;
     color: rgba(0, 0, 0, 0.65);
     font-size: 14px;
     line-height: 1.8;
-    margin-top: 8px;
-
-    text-overflow: ellipsis;
-    overflow: hidden;
+    margin-top: 6px;
   }
 
-  .outer {
-    position: relative;
+  .image {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
-    margin-top: 20px;
-    margin-bottom: 6px;
-    word-wrap: break-word;
-
-    border-bottom: 1px solid #e6e6e6;
-    border-radius: 6px;
-  }
-
-  .wrap-image {
-    float: right;
-    width: 160px;
-    height: 120px;
+    height: 180px;
+    max-height: 180px;
     overflow: hidden;
-    max-height: 120px;
-    border-radius: 4px;
-    border: 1px solid #f0f0f0;
-    margin-top: 70px;
-    margin-left: 5px;
-    margin-right: 20px
+    margin-bottom: 10px;
   }
 
-  .wrap-image img {
+  .image img {
     width: auto;
     height: auto;
-    max-height: 120px;
+    max-height: 180px;
   }
 
 </style>
@@ -150,18 +164,18 @@
       }
     },
     mounted: function () {
-      $(".to-truncate").dotdotdot({
+      $(".to-truncate-80").dotdotdot({
         callback: function () {},
         /* Function invoked after truncating the text.
            Inside this function, "this" refers to the wrapper. */
         ellipsis: "\u2026 ",
         /* The text to add as ellipsis. */
-        height: 100,
+        height: 80,
         /* The (max-)height for the wrapper:
            null: measure the CSS (max-)height ones;
            a number: sets a specific height in pixels;
            "watch": re-measures the CSS (max-)height in the "watch". */
-        keep: $(".to-truncate"),
+        keep: $(".to-truncate-80"),
         /* jQuery-selector for elements to keep after the ellipsis. */
         tolerance: 0,
         /* Deviation for the measured wrapper height. */
