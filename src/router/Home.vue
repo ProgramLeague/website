@@ -3,38 +3,35 @@
     <NavBar/>
     <Slide/>
     <div class="ui container content">
-      <div class="ui two column stackable grid">
-        <div class="twelve wide column">
-          <div class="ui vertical stripe segment">
-            <ul id="article-cards">
-              <ArticleCard v-for="articleCard in articleCards" :key="articleCard._key" :article="articleCard.article" :author="articleCard.author"
-              />
-            </ul>
-          </div>
-        </div>
-
-        <div id="stacks" class="four wide column">
+      <div id="stacks">
           <div>
-            <div>
               <span class="function-name">技术栈</span>
               <a class="function-more" target="_blank" href="">更多 >></a>
             </div>
             <StackList id="stack-list" />
           </div>
 
-          <div>
-            <p class="function-name">热门评论</p>
+      <div class="ui vertical stripe segment">
+        <ul id="article-cards">
+          <ArticleCard v-for="articleCard in articleCards" :key="articleCard._key" :article="articleCard.article" :author="articleCard.author"
+          />
+        </ul>
           </div>
         </div>
-      </div>
-    </div>
     <Footer/>
   </div>
 </template>
 
 <style scoped>
   #stack-list {
-    margin-top: -4px;
+    margin-top: 4px;
+    margin-bottom: 6px;
+  }
+
+  #stacks {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    padding: 0;
   }
 
   .content {
@@ -43,14 +40,14 @@
 
   .function-name {
     color: rgba(0, 0, 0, 0.6);
-    font-size: 1.3em;
+    font-size: 23px;
     font-weight: 500;
   }
 
   .function-more {
     float: right;
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 1.1em;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
     font-weight: 400;
   }
 
@@ -67,10 +64,10 @@
   #article-cards {
     display: block;
     margin-top: -30px !important;
+    list-style: none;
     margin-left: 1.5%;
     margin-right: 2.5%;
     padding: 0;
-    list-style: none;
   }
 
 </style>

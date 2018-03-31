@@ -6,18 +6,20 @@
         <div class="ui three column doubling stackable grid">
           <!-- 相关1 -->
           <div class="three wide column card" id="left-card" :style="{ backgroundColor: info.related.left.color }">
-            <div class="meta">
-              <div class="circle" :style="{ backgroundColor: info.related.left.color }"></div>
-              <span class="type">{{ info.related.left.type }}</span>
-            </div>
-            <div class="image">
-              <img :src="info.related.left.img">
-            </div>
-            <div class="content">
-              <span class="header">{{ info.related.left.name }}</span>
-              <p class="description">{{ info.related.left.description }}</p>
-              <p class="relation">{{ info.related.left.relation }}</p>
-            </div>
+            <router-link :to="{ name:'Stack', params: { id: info.related.left.id } }" style="color: black">
+              <div class="meta">
+                <div class="circle" :style="{ backgroundColor: info.related.left.color }"></div>
+                <span class="type">{{ info.related.left.type }}</span>
+              </div>
+              <div class="image">
+                <img :src="info.related.left.img">
+              </div>
+              <div class="content">
+                <span class="header">{{ info.related.left.name }}</span>
+                <p class="description">{{ info.related.left.description }}</p>
+                <p class="relation">{{ info.related.left.relation }}</p>
+              </div>
+            </router-link>>
           </div>
 
           <!-- 主 -->
@@ -27,7 +29,7 @@
               <span class="type">{{ info.type }}</span>
             </div>
             <div class="image">
-              <img :src="info.headerImg">
+              <img :src="info.img">
             </div>
             <div class="content">
               <span class="header">{{ info.name }}</span>
@@ -38,18 +40,20 @@
 
           <!-- 相关2 -->
           <div class="three wide column card" id="right-card" :style="{ backgroundColor: info.related.right.color }">
-            <div class="meta">
-              <div class="circle" :style="{ backgroundColor: info.related.right.color }"></div>
-              <span class="type">{{ info.related.right.type }}</span>
-            </div>
-            <div class="image">
-              <img :src="info.related.right.img">
-            </div>
-            <div class="content">
-              <span class="header">{{ info.related.right.name }}</span>
-              <p class="description">{{ info.related.right.description }}</p>
-              <p class="relation">{{ info.related.right.relation }}</p>
-            </div>
+            <router-link :to="{ name:'Stack', params: { id: info.related.right.id } }" style="color: black">
+              <div class="meta">
+                <div class="circle" :style="{ backgroundColor: info.related.right.color }"></div>
+                <span class="type">{{ info.related.right.type }}</span>
+              </div>
+              <div class="image">
+                <img :src="info.related.right.img">
+              </div>
+              <div class="content">
+                <span class="header">{{ info.related.right.name }}</span>
+                <p class="description">{{ info.related.right.description }}</p>
+                <p class="relation">{{ info.related.right.relation }}</p>
+              </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -74,6 +78,7 @@
     margin-left: 5px;
     height: 310px;
     border-radius: 10px;
+    overflow: hidden;
     text-align: center
   }
 
@@ -87,6 +92,13 @@
     top: 0;
     height: 210px;
     overflow: hidden;
+  }
+
+  /* TODO：需优化。先这么写着。 */
+
+  .header .card .image img {
+    width: 100%;
+    height: 100%;
   }
 
   .header .card .meta {
@@ -151,13 +163,6 @@
     font-weight: 300;
   }
 
-  /* TODO：需优化。先这么写着。 */
-
-  .header .card .image img {
-    width: 100%;
-    height: 100%;
-  }
-
   #center-card .content .header {
     overflow: hidden;
     font-weight: 500;
@@ -217,23 +222,25 @@
           introduction: "由Sun开发，现归于Oracle。Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程。",
           color: "teal",
           icon: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
-          headerImg: "https://tse4-mm.cn.bing.net/th?id=OIP.2tNDQkxM3lM0oAS3oVxp3QHaEK&p=0&o=5&pid=1.1",
+          img: "https://tse4-mm.cn.bing.net/th?id=OIP.2tNDQkxM3lM0oAS3oVxp3QHaEK&p=0&o=5&pid=1.1",
           related: {
             left: {
               uid: 199,
+              id: "oracle",
               name: "Oracle",
               type: "公司",
               description: "纯软件公司",
-              relation: "Java的开发商",
+              relation: "开发商",
               color: "rgb(129,211,123)",
               img: "https://tse4-mm.cn.bing.net/th?id=OIP.2tNDQkxM3lM0oAS3oVxp3QHaEK&p=0&o=5&pid=1.1"
             },
             right: {
               uid: 290,
+              id: "jdk",
               name: "JDK",
               type: "语言虚拟机",
               description: "Java虚拟机",
-              relation: "Java的官方实现",
+              relation: "官方实现",
               color: "rgb(12,45,12)",
               img: "https://tse4-mm.cn.bing.net/th?id=OIP.2tNDQkxM3lM0oAS3oVxp3QHaEK&p=0&o=5&pid=1.1"
             }

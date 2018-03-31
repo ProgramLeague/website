@@ -1,29 +1,24 @@
 <template>
-  <div class="this-content">
-    <div v-for="stack in stacks" :key="stack._key" :style="{ backgroundColor: stack.color }" class="stack-item">
-      <router-link :to="'/stack/' + stack.id" target="_blank">
-        <div>
-          <img class="icon" :src="stack.icon">
-        </div>
-        <div class="name">
-          <span>{{ stack.name }}</span>
-        </div>
+  <div class="ui equal width grid stackable container">
+    <router-link :to="'/stack/' + stack.id" target="_blank" v-for="stack in stacks" :key="stack._key" :style="{ backgroundColor: stack.color }"
+      class="stack-item column">
+      <div>
+        <img class="icon" :src="stack.icon">
+      </div>
+      <div class="name">
+        <span>{{ stack.name }}</span>
         <div class="description">
           <span class="need-fonts">{{ stack.description }}</span>
         </div>
-      </router-link>
-    </div>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <style scoped>
-  .this-content {
-    margin-top: 24px;
-  }
-
   .stack-item {
-    height: 40px;
-    width: 100%;
+    display: inline-block;
+    margin-right: 13px;
     border-radius: 6px;
     margin-top: 12px;
 
@@ -38,46 +33,67 @@
 
   .stack-item .icon {
     position: absolute;
-    margin-top: 5px;
-    margin-left: 5px;
+    padding: 0;
+    margin: 0;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
 
   .stack-item .name {
-    font-size: 1.3em;
-    line-height: 40px;
+    font-size: 16px;
     margin-left: 45px;
     font-weight: 500;
     color: white;
   }
 
-  .stack-item .description {
+  .stack-item .name .description {
     float: right;
-    font-size: 15px;
+    width: 100%;
+    overflow: hidden;
     color: white;
-    margin-top: -30px;
-    margin-right: 10px;
-    font-weight: 300;
+    opacity: .84;
+    font-size: 16px;
   }
 
   .stack-item .description span {
-    width: 140px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
   }
 
-  @media(max-width: 1140px) {
-    .stack-item .description {
-      font-size: 13px;
+  @media(max-width: 1040px) {
+    .stack-item .name * {
+      font-size: 15px;
     }
   }
 
   @media(max-width: 991px) {
     .stack-item .description {
       display: none;
+    }
+
+    .stack-item .icon {
+      margin-top: -5px;
+      margin-left: -5px;
+      width: 30px;
+      height: 30px;
+    }
+
+    .stack-item .name {
+      margin-left: 34px;
+    }
+  }
+
+  @media(max-width: 767px) {
+    .stack-item {
+      margin-top: 10px !important;
+      border-radius: 0;
+    }
+
+    .container {
+      border-radius: 6px;
+      overflow: hidden;
     }
   }
 
