@@ -91,7 +91,7 @@
         // Optional parameters
         direction: 'horizontal',
         loop: true,
-        autoHeight: true,
+        autoHeight: false,
 
         // If we need pagination
         pagination: {

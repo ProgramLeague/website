@@ -24,16 +24,17 @@
     </div>
 
     <div class="ui right big sidebar vertical menu" id="nav-sidebar">
-      <a class="item" v-for="item in items" :class="{ active: isThisPage(item.item.href) }" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
+      <router-link class="item" v-for="item in items" :class="{ active: isThisPage(item.item.href) }" :key="item._key" :to="item.item.href">{{ item.item.content }}</router-link>
 
       <a class="item">
-        技术栈
+        当下流行
         <div class="ui container">
           <div id="nav-stack-list">
             <StackList/>
           </div>
         </div>
       </a>
+      <router-link :to="'/stack/all'" id="nav-sidebar-stack-more" target="_blank" class="item">更多 >></router-link>
 
       <div class="item">
         <div class="ui icon input" id="nav-sidebar-search">
@@ -46,13 +47,21 @@
 </template>
 
 <style scoped>
+  #nav-sidebar-stack-more {
+    float: right;
+    font-size: 14px;
+    opacity: .7;
+    z-index: 2000;
+  }
+
   .nav .header {
     padding-right: 64px;
   }
 
   #nav-stack-list {
-    margin-top: 20px;
     width: 246px;
+    margin-top: 30px;
+    margin-bottom: 20px;
     margin-left: -15px;
     margin-right: auto;
   }

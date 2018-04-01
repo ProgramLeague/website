@@ -99,13 +99,6 @@
 
 </style>
 
-<style>
-  .need-fonts {
-    font-family: -apple-system, SF UI Display, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
-  }
-
-</style>
-
 <script>
   export default {
     data() {
@@ -132,7 +125,7 @@
           {
             _key: nextStackId++,
             uid: 2,
-            ud: "kotlin",
+            id: "kotlin",
             name: "Kotlin",
             description: "更好的Java",
             icon: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
