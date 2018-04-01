@@ -4,6 +4,7 @@
 
 ![屏幕截图](https://raw.githubusercontent.com/ProgramLeague/website/master/img/screenshot.jpg)
 
+> 截图中图片看不见是因为视差效果 ;)
 > 屏幕截图可能不是最新版本，建议自行克隆后使用`npm run dev`查看。
 
 咋们是不是一直计划搭个网站的啊...
