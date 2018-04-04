@@ -1,5 +1,5 @@
 <template>
-  <div class="ui equal width grid stackable container">
+  <div class="ui equal width grid stackable container outer">
     <router-link :to="'/stack/' + stack.id" target="_blank" v-for="stack in stacks" :key="stack._key" :style="{ backgroundColor: stack.color }"
       class="stack-item column">
       <div>
@@ -91,7 +91,7 @@
       border-radius: 0;
     }
 
-    .container {
+    .outer {
       border-radius: 6px;
       overflow: hidden;
     }

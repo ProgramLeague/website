@@ -3,12 +3,26 @@
     <NavBar/>
     <Slide/>
     <div class="content">
-      <div id="stacks" class="narrow-hidden">
-        <div>
-          <span class="function-name">技术栈</span>
-          <a class="function-more" target="_blank" href="">更多 >></a>
+      <div id="header">
+        <div class="ui container">
+          <div class="ui stackable three column grid">
+            <div id="hot-comments" class="column">
+              <span class="function-name">热门评论</span>
+              <TopComments class="inner" />
+            </div>
+            <div class="column"></div>
+            <div class="column">
+              <ADCard :data="ads" />
+            </div>
+          </div>
         </div>
-        <StackList id="stack-list" />
+        <div class="narrow-hidden">
+          <div class="ui container">
+            <span class="function-name">技术栈</span>
+            <a class="function-more" target="_blank" href="">更多 >></a>
+            <StackList/>
+          </div>
+        </div>
       </div>
 
       <div v-for="column in columns" :key="column._key">
@@ -16,7 +30,7 @@
 
           <div class="link" v-if="column.to">
             <router-link :to="column.to" class="inner" target="_blank">
-              <div class="text">
+              <div data-tooltip="单击以查看更多" data-inverted="" data-position="top left" class="text">
                 <p class="title">{{ column.name }}</p>
                 <p v-if="column.description" class="description">{{ column.description }}</p>
               </div>
@@ -28,7 +42,6 @@
               <p v-if="column.description" class="description">{{ column.description }}</p>
             </div>
           </template>
-
         </div>
 
         <div class="ui container">
@@ -56,6 +69,14 @@
     text-align: center;
   }
 
+  .have-border {
+    border: 1px solid rgba(0, 0, 0, .05);
+    border-radius: 3px;
+  }
+
+  .have-hover-border:hover {
+    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.1);
+  }
 
   .parallax-window .text .title {
     color: white;
@@ -79,11 +100,19 @@
     margin-bottom: 6px;
   }
 
-  #stacks {
+  #header {
     margin-left: 2.5%;
     margin-right: 2.5%;
     margin-bottom: 40px;
-    padding: 0;
+  }
+
+  #hot-comments {
+    margin-top: 10px;
+    margin-bottom: 24px;
+  }
+
+  #hot-comments .inner {
+    margin-top: 10px;
   }
 
   .content {
@@ -93,7 +122,6 @@
 
   .article-list {
     margin-top: 24px !important;
-    margin-left: 2%;
   }
 
   .function-name {
@@ -114,7 +142,7 @@
   }
 
   .function-more:hover {
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(0, 0, 0, 0.6);
   }
 
   @media(max-width: 767px) {
@@ -126,8 +154,7 @@
   .article-cards {
     margin-top: -30px !important;
     list-style: none;
-    margin-left: 1.5%;
-    margin-right: 2.5%;
+    margin-left: 3%;
     padding: 0;
   }
 
@@ -138,24 +165,32 @@
 </style>
 
 <script>
-  import Slide from '../components/Slide.vue'
+  import ADCard from '../components/ADCard'
+  import TopComments from '../components/TopComments.vue'
+  import Slide from '../components/Slide'
   import NavBar from '../components/NavBar'
-  import Footer from '../components/Footer.vue'
+  import Footer from '../components/Footer'
   import ArticleCard from '../components/ArticleCard'
-  import StackList from '../components/StackList.vue'
+  import StackList from '../components/StackList'
+
+  import {
+    FakeData
+  } from '../utils/utils'
 
   export default {
     name: 'Home',
     components: {
+      ADCard,
       Slide,
       NavBar,
       ArticleCard,
       StackList,
-      Footer
+      Footer,
+      TopComments
     },
     mounted: function () {
       let link = $('.parallax-window .link')
-      let title = $('.parallax-window .text .title')
+      let title = $('.parallax-window .link .text .title')
       let window = $('.parallax-window')
 
       link.mouseenter(() => {
@@ -180,84 +215,8 @@
     },
     data() {
       let nextColumnId = 0
-      let nextArticleId = 0
       let img = "https://tse1-mm.cn.bing.net/th?id=OIP.3iTMNkANw-FFI-x8vJqD4wHaDF&p=0&o=5&pid=1.1"
-      let articles = [{
-        _key: nextArticleId++,
-        article: {
-          uid: 9347,
-          title: "吃荔枝对身体有好处",
-          abstract: "荔枝含天然葡萄糖多，还有蛋白质、碳水化合物、多种维生素。补脑，健身，益智；但是多吃上火，会引起体内糖代谢紊乱，造成“荔枝病”(即低血糖)，轻者恶心，出汗，口渴无力；重者头晕，昏迷。荔枝可强身，适当吃并不会导致肥胖。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。特别是儿童。",
-          category: ["a", "b"],
-          headerImg: "https://tse1-mm.cn.bing.net/th?id=OIP.3iTMNkANw-FFI-x8vJqD4wHaDF&p=0&o=5&pid=1.1"
-        },
-        author: {
-          id: "beta",
-          nickname: "Beta",
-          avatar: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
-          bio: "祈愿的碎片啊，请成为永恒的存在。"
-        }
-      }, {
-        _key: nextArticleId++,
-        article: {
-          uid: 9347,
-          title: "吃荔枝对身体有好处",
-          abstract: "荔枝含天然葡萄糖多，还有蛋白质、碳水化合物、多种维生素。补脑，健身，益智；但是多吃上火，会引起体内糖代谢紊乱，造成“荔枝病”(即低血糖)，轻者恶心，出汗，口渴无力；重者头晕，昏迷。荔枝可强身，适当吃并不会导致肥胖。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。特别是儿童。",
-          category: ["a", "b"],
-          headerImg: "https://tse1-mm.cn.bing.net/th?id=OIP.3iTMNkANw-FFI-x8vJqD4wHaDF&p=0&o=5&pid=1.1"
-        },
-        author: {
-          id: "beta",
-          nickname: "Beta",
-          avatar: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
-          bio: "祈愿的碎片啊，请成为永恒的存在。"
-        }
-      }, {
-        _key: nextArticleId++,
-        article: {
-          uid: 9347,
-          title: "吃荔枝对身体有好处",
-          abstract: "荔枝含天然葡萄糖多，还有蛋白质、碳水化合物、多种维生素。补脑，健身，益智；但是多吃上火，会引起体内糖代谢紊乱，造成“荔枝病”(即低血糖)，轻者恶心，出汗，口渴无力；重者头晕，昏迷。荔枝可强身，适当吃并不会导致肥胖。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。特别是儿童。",
-          category: ["a", "b"],
-          headerImg: "https://tse1-mm.cn.bing.net/th?id=OIP.3iTMNkANw-FFI-x8vJqD4wHaDF&p=0&o=5&pid=1.1"
-        },
-        author: {
-          id: "beta",
-          nickname: "Beta",
-          avatar: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
-          bio: "祈愿的碎片啊，请成为永恒的存在。"
-        }
-      }, {
-        _key: nextArticleId++,
-        article: {
-          uid: 9347,
-          title: "吃荔枝对身体有好处",
-          abstract: "荔枝含天然葡萄糖多，还有蛋白质、碳水化合物、多种维生素。补脑，健身，益智；但是多吃上火，会引起体内糖代谢紊乱，造成“荔枝病”(即低血糖)，轻者恶心，出汗，口渴无力；重者头晕，昏迷。荔枝可强身，适当吃并不会导致肥胖。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。特别是儿童。",
-          category: ["a", "b"],
-          headerImg: "https://tse1-mm.cn.bing.net/th?id=OIP.3iTMNkANw-FFI-x8vJqD4wHaDF&p=0&o=5&pid=1.1"
-        },
-        author: {
-          id: "beta",
-          nickname: "Beta",
-          avatar: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
-          bio: "祈愿的碎片啊，请成为永恒的存在。"
-        }
-      }, {
-        _key: nextArticleId++,
-        article: {
-          uid: 9347,
-          title: "吃荔枝对身体有好处",
-          abstract: "荔枝含天然葡萄糖多，还有蛋白质、碳水化合物、多种维生素。补脑，健身，益智；但是多吃上火，会引起体内糖代谢紊乱，造成“荔枝病”(即低血糖)，轻者恶心，出汗，口渴无力；重者头晕，昏迷。荔枝可强身，适当吃并不会导致肥胖。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。特别是儿童。",
-          category: ["a", "b"],
-          headerImg: "https://tse1-mm.cn.bing.net/th?id=OIP.3iTMNkANw-FFI-x8vJqD4wHaDF&p=0&o=5&pid=1.1"
-        },
-        author: {
-          id: "beta",
-          nickname: "Beta",
-          avatar: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
-          bio: "祈愿的碎片啊。祈愿的碎片啊。祈愿的碎片啊。祈愿的碎片啊。"
-        }
-      }]
+      let articles = FakeData.articles
       return {
         columns: [{
           _key: nextColumnId++,
@@ -265,14 +224,10 @@
           description: '一种崭新的装逼方式。',
           img: img,
           articles: articles
-        }, {
-          _key: nextColumnId++,
-          name: 'beta',
-          description: "啦啦啦",
-          img: img,
-          to: '/stack/all',
-          articles: articles
-        }]
+        }],
+        ads: {
+          img: img
+        }
       }
     }
   }

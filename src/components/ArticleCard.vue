@@ -1,5 +1,5 @@
 <template>
-  <div class="outer">
+  <div class="outer have-border have-hover-border">
     <div class="card-content">
       <div class="image">
         <router-link class="image" :to="{ name: 'Article', params: { uid: article.uid }}" v-if="article.headerImg" replace>
@@ -39,13 +39,6 @@
     margin-top: 16px;
     margin-bottom: 6px;
     margin-right: 16px;
-
-    border: 1px solid rgba(0, 0, 0, .05);
-    border-radius: 3px;
-  }
-
-  .outer:hover {
-    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.1);
   }
 
   .author {
