@@ -215,7 +215,7 @@
     },
     data() {
       let nextColumnId = 0
-      let img = "https://tse1-mm.cn.bing.net/th?id=OIP.3iTMNkANw-FFI-x8vJqD4wHaDF&p=0&o=5&pid=1.1"
+      let img = "https://raw.githubusercontent.com/ProgramLeague/website/master/img/kafai-liu-485751-unsplash.jpg"
       let articles = FakeData.articles
       return {
         columns: [{
