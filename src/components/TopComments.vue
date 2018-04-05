@@ -1,6 +1,6 @@
 <template>
-  <div class="outer">
-    <div class="ui minimal comments">
+  <div class="outer have-border have-hover-border">
+    <div class="ui minimal comments top-comments">
       <div v-for="comment in comments" :key="comment.order" class="comment">
         <a class="avatar">
           <img :src="comment.author.avatar">
@@ -36,7 +36,15 @@
 </template>
 
 <style scoped>
+  .outer {
+    height: 92%;
+    width: 100%;
+  }
 
+  .top-comments {
+    padding: 12px;
+    margin: 0;
+  }
 
 </style>
 

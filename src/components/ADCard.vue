@@ -1,5 +1,5 @@
 <template>
-  <div class="outer" :style="{ backgroundImage: 'url(' + data.img + ')' }"></div>
+  <div class="outer have-border have-hover-border" :style="{ backgroundImage: 'url(' + data.img + ')' }"></div>
 </template>
 
 <style scoped>
