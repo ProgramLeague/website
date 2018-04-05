@@ -6,13 +6,11 @@ var _ = require('lodash');
 
 var DataHandler = {}
 DataHandler.handle = function (array) {
-  let arrayN = array
   let counter = 0
-  for (let element of arrayN) {
+  for (let element of array) {
     element['_key'] = counter++
-      console.log(element)
   }
-  return arrayN
+  return array
 }
 
 var article = {

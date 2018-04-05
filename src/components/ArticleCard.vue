@@ -43,7 +43,7 @@
 
   .author {
     position: absolute;
-    bottom: 10px;
+    bottom: 14px;
     height: 32px;
   }
 

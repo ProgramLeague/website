@@ -1,11 +1,19 @@
 <template>
-  <div class="outer have-border have-hover-border" :style="{ backgroundImage: 'url(' + data.img + ')' }"></div>
+  <div class="outer size have-border have-hover-border narrow-hidden">
+    <a :href="data.to" target="_blank">
+      <div class="size" :style="{ backgroundImage: 'url(' + data.img + ')' }"></div>
+    </a>
+    <a :href="data.to" target="_blank">
+      <div class="size" :style="{ backgroundImage: 'url(' + data.img + ')' }"></div>
+    </a>
+  </div>
 </template>
 
 <style scoped>
-  .outer {
+  .size {
     width: 160px;
     height: 364px;
+    overflow: hidden;
   }
 
 </style>

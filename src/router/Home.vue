@@ -5,13 +5,16 @@
     <div class="content">
       <div id="header">
         <div class="ui container">
-          <div class="ui stackable three column grid">
-            <div id="hot-comments" class="column">
+          <div class="ui three column stackable grid">
+            <div class="aliged five wide column">
               <span class="function-name">热门评论</span>
               <TopComments class="inner" />
             </div>
-            <div class="column"></div>
-            <div class="column">
+            <div class="aliged seven wide column">
+              <span class="function-name">全站最佳</span>
+              <TopContributors id="top-contributors" class="inner" />
+            </div>
+            <div class="column two wide narrow-hidden">
               <ADCard :data="ads" />
             </div>
           </div>
@@ -100,18 +103,22 @@
     margin-bottom: 6px;
   }
 
+  #top-contributors {
+    border-top: 3px solid orange;
+  }
+
   #header {
     margin-left: 2.5%;
     margin-right: 2.5%;
     margin-bottom: 40px;
   }
 
-  #hot-comments {
+  #header .aliged {
     margin-top: 10px;
     margin-bottom: 24px;
   }
 
-  #hot-comments .inner {
+  #header .aliged .inner {
     margin-top: 10px;
   }
 
@@ -166,12 +173,13 @@
 
 <script>
   import ADCard from '../components/ADCard'
-  import TopComments from '../components/TopComments.vue'
+  import TopComments from '../components/TopComments'
   import Slide from '../components/Slide'
   import NavBar from '../components/NavBar'
   import Footer from '../components/Footer'
   import ArticleCard from '../components/ArticleCard'
   import StackList from '../components/StackList'
+  import TopContributors from '../components/TopContributors'
 
   import {
     FakeData
@@ -186,7 +194,8 @@
       ArticleCard,
       StackList,
       Footer,
-      TopComments
+      TopComments,
+      TopContributors
     },
     mounted: function () {
       let link = $('.parallax-window .link')
@@ -224,9 +233,17 @@
           description: '一种崭新的装逼方式。',
           img: img,
           articles: articles
+        }, {
+          _key: nextColumnId++,
+          name: '谁知道我是啥',
+          description: '哈 谁知道呢？',
+          to: '/stack/what?',
+          img: img,
+          articles: articles
         }],
         ads: {
-          img: img
+          img: img,
+          to: 'https://cn.bing.com'
         }
       }
     }
