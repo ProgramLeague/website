@@ -17,7 +17,7 @@
             <div class="metadata">
               <span class="date">{{ comment.time }}</span>
               <div class="rating have-hover-color">
-                <i class="star icon"></i>{{ comment.rate }} 喜爱
+                <i class="outline heart icon"></i>{{ comment.rate }} 喜爱
               </div>
             </div>
             <div class="text">
@@ -25,7 +25,7 @@
             </div>
             <div class="actions">
               <a class="like">
-                <i class="star icon"></i>
+                <i class="heart icon"></i>
                 <span style="margin-left: -4px">我喜欢这个！</span>
               </a>
             </div>
@@ -40,7 +40,7 @@
                 <div class="metadata">
                   <span class="date">{{ subComment.time }}</span>
                   <div class="rating have-hover-color">
-                    <i class="star icon"></i>{{ subComment.rate }} 喜爱
+                    <i class="outline heart icon"></i>{{ subComment.rate }} 喜爱
                   </div>
                 </div>
                 <div class="text">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="actions">
                   <a class="like">
-                    <i class="star icon"></i>
+                    <i class="heart icon"></i>
                     <span style="margin-left: -4px">我喜欢这个！</span>
                   </a>
                 </div>
