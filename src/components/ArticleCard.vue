@@ -80,7 +80,6 @@
   }
 
   @media(max-width: 767px) {
-
     .author .info .bio {
       display: none;
     }
@@ -91,6 +90,10 @@
       font-weight: 300;
       line-height: 36px;
       margin-left: 4px;
+    }
+
+    .aliged {
+      margin-top: 20px;
     }
   }
 

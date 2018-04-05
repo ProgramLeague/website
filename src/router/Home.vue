@@ -10,12 +10,13 @@
               <span class="function-name">热门评论</span>
               <TopComments class="inner" />
             </div>
-            <div class="aliged seven wide column">
+            <div class="aliged center six wide column">
               <span class="function-name">全站最佳</span>
               <TopContributors id="top-contributors" class="inner" />
             </div>
-            <div class="column two wide narrow-hidden">
-              <ADCard :data="ads" />
+            <div class="aliged five wide column">
+              <span class="function-name">热门文章</span>
+              <TopArticles class="inner" />
             </div>
           </div>
         </div>
@@ -81,6 +82,10 @@
     box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.1);
   }
 
+  .have-hover-color:hover {
+    color: var(--theme-color)
+  }
+
   .parallax-window .text .title {
     color: white;
     opacity: .86;
@@ -116,6 +121,7 @@
   #header .aliged {
     margin-top: 10px;
     margin-bottom: 24px;
+    height: 400px;
   }
 
   #header .aliged .inner {
@@ -180,6 +186,7 @@
   import ArticleCard from '../components/ArticleCard'
   import StackList from '../components/StackList'
   import TopContributors from '../components/TopContributors'
+  import TopArticles from '../components/TopArticles'
 
   import {
     FakeData
@@ -195,7 +202,8 @@
       StackList,
       Footer,
       TopComments,
-      TopContributors
+      TopContributors,
+      TopArticles
     },
     mounted: function () {
       let link = $('.parallax-window .link')
