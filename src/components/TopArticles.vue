@@ -46,12 +46,14 @@
           </router-link>
         </div>
         <div class="metadata sub-no-margin">
-          <p>
-            <i class="outline thumbs up icon"></i>{{ article.article.counter.like }}
-          </p>
-          <p class="hate">
-            <i class="outline thumbs down icon"></i>{{ article.article.counter.hate }}
-          </p>
+          <router-link :to="'/article/' + article.article.uid" target="_blank">
+            <p>
+              <i class="outline thumbs up icon"></i>{{ article.article.counter.like }}
+            </p>
+            <p class="hate">
+              <i class="outline thumbs down icon"></i>{{ article.article.counter.hate }}
+            </p>
+          </router-link>
         </div>
       </div>
     </div>
@@ -76,7 +78,14 @@
   .articles .article .metadata {
     float: right;
     overflow: hidden;
+  }
+
+  .articles .article .metadata a {
     color: rgba(0, 0, 0, 0.7);
+  }
+
+  .articles .article .metadata a:hover {
+    color: rgba(0, 0, 0, 0.8);
   }
 
   .articles .article {

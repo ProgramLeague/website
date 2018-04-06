@@ -44,12 +44,14 @@
                   <p class="bio">{{ row.bio }}</p>
                 </div>
                 <div class="metadata sub-no-margin">
-                  <p>
-                    <i class="outline file icon"></i>{{ row.counter['total-articles'] }}
-                  </p>
-                  <p>
-                    <i class="fa fa-diamond"></i> {{ row.counter.influence }}
-                  </p>
+                  <router-link :to="'/user/' + row.id" target="_blank">
+                    <p>
+                      <i class="outline file icon"></i> {{ row.counter['total-articles'] }}
+                    </p>
+                    <p>
+                      <i class="fa fa-diamond"></i> {{ row.counter.influence }}
+                    </p>
+                  </router-link>
                 </div>
               </router-link>
             </div>
@@ -72,7 +74,6 @@
   .authors-inner-row .identifier {
     display: inline-block;
     position: relative;
-    top: -8px;
     left: -3px;
     font-size: 24px;
     width: 18px;
@@ -80,10 +81,17 @@
   }
 
   .authors-inner-row .metadata {
-    color: rgba(0, 0, 0, 0.7);
     float: right;
     height: 30px;
     line-height: 30px;
+  }
+
+  .authors-inner-row .metadata a {
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .authors-inner-row .metadata a:hover {
+    color: rgba(0, 0, 0, 0.8);
   }
 
   .authors-inner-row .info {

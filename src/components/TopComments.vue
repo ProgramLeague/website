@@ -3,7 +3,7 @@
     <div class="ui comments top-comments">
       <div v-for="comment in comments" :key="comment.order">
         <p class="article-title">在：
-          <router-link class="link" :to="{ name: 'Article', params: { uid: comment.article.uid }}">
+          <router-link class="link" :to="{ name: 'Article', params: { uid: comment.article.uid }}" target="_blank">
             {{ comment.article.title }}
           </router-link>
         </p>

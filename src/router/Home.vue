@@ -10,14 +10,17 @@
               <span class="function-name">热门评论</span>
               <TopComments class="inner" />
             </div>
+
             <div class="aliged center six wide column">
               <span class="function-name">全站最佳</span>
               <TopContributors id="top-contributors" class="inner" />
             </div>
+
             <div class="aliged five wide column">
               <span class="function-name">热门文章</span>
               <TopArticles class="inner" />
             </div>
+
           </div>
         </div>
         <div class="narrow-hidden">
