@@ -2,6 +2,7 @@
   <div>
     <NavBar/>
     <Slide/>
+    <CornerBar/>
     <div class="content">
       <div id="header">
         <div class="ui container">
@@ -182,6 +183,7 @@
 
 <script>
   import ADCard from '../components/ADCard'
+  import CornerBar from '../components/CornerBar'
   import TopComments from '../components/TopComments'
   import Slide from '../components/Slide'
   import NavBar from '../components/NavBar'
@@ -199,6 +201,7 @@
     name: 'Home',
     components: {
       ADCard,
+      CornerBar,
       Slide,
       NavBar,
       ArticleCard,

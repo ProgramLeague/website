@@ -85,6 +85,9 @@
 
 <script>
   import Swiper from 'swiper'
+  import {
+    immediateFileCommand
+  } from '../../node_modules/_node-notifier@5.2.1@node-notifier/lib/utils';
   export default {
     mounted: function () {
       new Swiper('.swiper-container', {
@@ -120,20 +123,20 @@
     },
     data() {
       let nextSlideId = 0
+      let img = "https://raw.githubusercontent.com/ProgramLeague/website/master/img/kafai-liu-485751-unsplash.jpg"
       return {
         slides: [{
             _key: nextSlideId++,
             slide: {
               articleUid: 9347,
-              img: "https://tse3-mm.cn.bing.net/th?id=OIP.NZyyd7I7K1qof74h9NJiNgHaEo&p=0&o=5&pid=1.1",
+              img: img,
             }
           },
           {
             _key: nextSlideId++,
             slide: {
               articleUid: 12353,
-              img: "https://tse4-mm.cn.bing.net/th?id=OIP.GZZx5Rgf8kLTWHiCxB7yxwHaEK&p=0&o=5&pid=1.1",
-              uid: 12323
+              img: img
             }
           }
         ]
