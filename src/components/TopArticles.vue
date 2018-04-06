@@ -2,7 +2,7 @@
   <div class="outer have-border have-hover-border">
     <div class="top">
       <div class="identifier">
-        <span>1.</span>
+        <span class="colored">1.</span>
       </div>
       <div class="content-outer">
         <div class="content">
@@ -31,12 +31,66 @@
       </div>
     </div>
     <div class="ui divider"></div>
+
+    <div class="articles">
+      <div class="article" v-for="(article, index) in articles" :key="article.order">
+        <div class="identifier" :class="{ colored: index < 2 }">
+          <span>{{ index + 2 }}.</span>
+        </div>
+        <div class="content sub-no-margin">
+          <router-link :to="'/user/' + article.author.id" target="_blank" class="router-link">
+            <p class="nickname">{{ article.author.nickname }}：</p>
+          </router-link>
+          <router-link :to="'/article/' + article.article.uid" target="_blank" class="router-link">
+            <p class="title">{{ article.article.title }}</p>
+          </router-link>
+        </div>
+        <div class="metadata sub-no-margin">
+          <p>
+            <i class="outline thumbs up icon"></i>{{ article.article.counter.like }}
+          </p>
+          <p class="hate">
+            <i class="outline thumbs down icon"></i>{{ article.article.counter.hate }}
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
+  .articles .article .content .nickname {
+    opacity: .7;
+    font-size: 16px;
+  }
+
+  .articles .article .content p {
+    font-size: 16px;
+  }
+
+  .articles .article .identifier {
+    font-size: 24px;
+    margin-right: 6px;
+  }
+
+  .articles .article .metadata {
+    float: right;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .articles .article {
+    overflow: hidden;
+    margin-top: 4px;
+    height: 44px;
+  }
+
+  .articles .article>div {
+    display: inline-block;
+  }
+
   .top .content .article .metadata {
-    color: rgba(0, 0, 0, 0.6);
+    opacity: .6;
   }
 
   .top .content .article .metadata .hate {
@@ -91,11 +145,19 @@
   }
 
   .author .nickname {
-    color: rgba(0, 0, 0, .7)
+    opacity: .7;
   }
 
   .avatar-img {
     border-radius: 50%;
+  }
+
+  .sub-no-margin * {
+    margin: 0;
+  }
+
+  .colored {
+    color: var(--theme-color)
   }
 
   .outer {
@@ -123,7 +185,7 @@
     data: function () {
       let articleArray = new Array()
       let articles = {}
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 4; i++) {
         let thisArticle = {}
         thisArticle.order = i
         thisArticle.article = FakeData.article

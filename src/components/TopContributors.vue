@@ -2,7 +2,7 @@
   <div class="outer have-border have-hover-border">
     <div class="top-contributors">
       <div class="top">
-        <p class="identifier">Top 1</p>
+        <p class="identifier colored">Top 1</p>
 
         <div class="content">
           <div class="author">
@@ -35,7 +35,7 @@
           <div class="first">
             <div v-for="(row, index) in data.authors" :key="row.order" class="row authors-inner-row">
               <div class="identifier">
-                <span>{{ index + 2 }}.</span>
+                <span :class="{ colored: index < 2 }">{{ index + 2 }}.</span>
               </div>
               <router-link :to="'/user/' + row.id" target="_blank" class="router-link">
                 <img class="avatar-img" :src="row.avatar">
@@ -119,19 +119,18 @@
   .authors-outer {
     margin-left: 6px;
     margin-right: 6px;
-    margin-top: 6px;
+    margin-top: 8px;
   }
 
   .top .identifier {
     font-size: 22px;
     font-weight: 600;
     margin-top: -6px;
-    margin-bottom: 6px;
+    margin-bottom: 0;
   }
 
   .top .content {
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     white-space: nowrap;
   }
 
@@ -159,6 +158,12 @@
       width: 100% !important;
     }
 
+    .authors-inner-row .metadata {
+      display: none;
+    }
+  }
+
+  @media (max-width: 392px) {
     .authors-inner-row .metadata {
       display: none;
     }
@@ -208,6 +213,10 @@
 
   .sub-no-margin * {
     margin: 0;
+  }
+
+  .colored {
+    color: orange
   }
 
   .top {
