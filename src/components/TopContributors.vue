@@ -14,9 +14,15 @@
                 <p class="nickname">{{ data.top.nickname }}</p>
                 <div class="metadata">
                   <p>
-                    <i class="file icon"></i> 总文章数：{{ data.top.counter.totalArticles }}</p>
+                    <i class="file icon"></i>
+                    <span> 总文章数：</span>
+                    {{ data.top.counter['total-articles'] }}
+                  </p>
                   <p>
-                    <i class="heart icon"></i> 总喜爱数：{{ data.top.counter.totalLikes }}</p>
+                    <i class="diamond icon"></i>
+                    <span> 总影响力：</span>
+                    {{ data.top.counter.influence }}
+                  </p>
                 </div>
               </div>
             </router-link>
@@ -24,46 +30,26 @@
         </div>
       </div>
       <div class="ui divider"></div>
-      <div>
-        <div class="ui two column grid authors">
-          <div class="eight wide column first">
-            <div v-for="(row, index) in data.authors" v-if="index < 4" :key="row.order" class="row authors-inner-row">
-              <span class="identifier">{{ index + 2 }}.</span>
+      <div class="authors-outer">
+        <div class="authors">
+          <div class="first">
+            <div v-for="(row, index) in data.authors" :key="row.order" class="row authors-inner-row">
+              <div class="identifier">
+                <span>{{ index + 2 }}.</span>
+              </div>
               <router-link :to="'/user/' + row.id" target="_blank" class="router-link">
                 <img class="avatar-img" :src="row.avatar">
-                <div class="info">
-                  <span class="nickname">{{ row.nickname }}</span>
-                  <div class="metadata">
-                    <span>
-                      <i class="outline file icon"></i>{{ row.counter.totalArticles }}
-                    </span>
-                    <span>
-                      <i class="outline heart icon"></i>{{ row.counter.totalLikes }}
-                    </span>
-                  </div>
+                <div class="info sub-no-margin">
+                  <p class="nickname">{{ row.nickname }}</p>
+                  <p class="bio">{{ row.bio }}</p>
                 </div>
-              </router-link>
-            </div>
-          </div>
-
-          <div class="eight wide column second">
-            <div id="articles-divider-outer">
-              <div id="articles-divider"></div>
-            </div>
-            <div v-for="(row, index) in data.authors" v-if="index >= 4" :key="row.order" class="row authors-inner-row">
-              <span class="identifier">{{ index + 2 }}.</span>
-              <router-link :to="'/user/' + row.id" target="_blank" class="router-link">
-                <img class="avatar-img" :src="row.avatar">
-                <div class="info">
-                  <span class="nickname">{{ row.nickname }}</span>
-                  <div class="metadata">
-                    <span>
-                      <i class="outline file icon"></i>{{ row.counter.totalArticles }}
-                    </span>
-                    <span>
-                      <i class="outline heart icon"></i>{{ row.counter.totalLikes }}
-                    </span>
-                  </div>
+                <div class="metadata sub-no-margin">
+                  <p>
+                    <i class="outline file icon"></i>{{ row.counter['total-articles'] }}
+                  </p>
+                  <p>
+                    <i class="fa fa-diamond"></i> {{ row.counter.influence }}
+                  </p>
                 </div>
               </router-link>
             </div>
@@ -83,62 +69,57 @@
     color: var(--theme-color) !important
   }
 
-  #articles-divider {
-    height: .5px;
-    background-color: rgba(0, 0, 0, 0.16);
-    transform: rotate(90deg);
-    position: relative;
-    top: 75px;
-    left: -84px;
-    width: 152px;
-  }
-
   .authors-inner-row .identifier {
+    display: inline-block;
     position: relative;
     top: -8px;
-    font-weight: 600;
-  }
-
-  .authors .second {
-    margin-top: -1px;
-    margin-left: -6px;
+    left: -3px;
+    font-size: 24px;
+    width: 18px;
+    overflow: hidden;
   }
 
   .authors-inner-row .metadata {
-    opacity: .7;
-    display: inline-block;
-    position: relative;
-    top: -8px;
-    left: 10px;
+    color: rgba(0, 0, 0, 0.7);
+    float: right;
+    height: 30px;
+    line-height: 30px;
   }
-
-  @media(max-width: 767px) {
-    .authors-inner-row .metadata {
-      display: none
-    }
-  }
-
-  .authors-inner-row .info .nickname {
-    position: relative;
-    overflow: hidden;
-    top: -8px;
-    margin-left: 4px;
-  }
-
 
   .authors-inner-row .info {
     display: inline-block;
+    margin-left: 2px;
+    width: 60% !important;
+    overflow: hidden;
+  }
+
+  .authors-inner-row .info .bio {
+    opacity: .7;
   }
 
   .authors-inner-row {
     padding-top: 3px;
     padding-left: 3px;
     padding-bottom: 0;
+    margin-top: -1px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
   }
 
   .authors-inner-row .avatar-img {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .authors {
+    margin-top: -5px;
+  }
+
+  .authors-outer {
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 6px;
   }
 
   .top .identifier {
@@ -151,6 +132,7 @@
   .top .content {
     margin-top: 6px;
     margin-bottom: 6px;
+    white-space: nowrap;
   }
 
   .top .content .info {
@@ -158,15 +140,28 @@
   }
 
   .top .content .info .inner {
-    position: relative;
-    top: -15px;
     margin-left: 12px;
     text-align: left;
   }
 
   .top .content .info .inner .metadata {
-    margin-top: -4px;
-    color: rgba(0, 0, 0, 0.6);
+    margin-top: -6px;
+    font-size: 14px;
+    opacity: .6;
+  }
+
+  @media (max-width: 991px) and (min-width: 767px) {
+    .top .content .info .inner .metadata p span {
+      display: none
+    }
+
+    .authors-inner-row .info {
+      width: 100% !important;
+    }
+
+    .authors-inner-row .metadata {
+      display: none;
+    }
   }
 
   .top .content .info .inner * {
@@ -178,8 +173,8 @@
   }
 
   .top .content .author .avatar-img {
-    width: 120px;
-    height: 120px;
+    width: 95px;
+    height: 95px;
   }
 
   .top .content .info .nickname {
@@ -205,6 +200,16 @@
     width: 100%;
   }
 
+  .no-wrap {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .sub-no-margin * {
+    margin: 0;
+  }
+
   .top {
     text-align: center;
     border-radius: 6px;
@@ -225,15 +230,16 @@
       let data = {}
       author.joinTime = '2014-12-23'
       author.counter = {}
-      author.counter.totalArticles = 23
-      author.counter.totalLikes = 453
+      author.counter['total-articles'] = 23
+      author.counter.influence = 4930
 
       data.top = _.cloneDeep(author)
 
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < 4; i++) {
         author.order = i
         authorArray.push(_.cloneDeep(author))
       }
+      authorArray[2].nickname = "6alpha"
       data.authors = []
       data.authors = authorArray
       return {

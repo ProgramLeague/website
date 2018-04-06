@@ -9,11 +9,13 @@
         </p>
 
         <div class="comment outer-comment">
-          <a class="avatar">
-            <img :src="comment.author.avatar">
-          </a>
+          <router-link class="avatar" :to="'/user/' + comment.author.id" target="_blank">
+            <img style="border-radius: 50%" :src="comment.author.avatar">
+          </router-link>
           <div class="content">
-            <a class="author">{{ comment.author.nickname }}</a>
+            <router-link class="author" :to="'/user/' + comment.author.id" target="_blank">
+              {{ comment.author.nickname }}
+            </router-link>
             <div class="metadata">
               <span class="date">{{ comment.time }}</span>
               <div class="rating have-hover-color">
@@ -32,11 +34,13 @@
           </div>
           <div v-if="comment.comments" v-for="subComment in comment.comments" :key="subComment.order" class="comments">
             <div class="comment">
-              <a class="avatar">
-                <img :src="subComment.author.avatar">
-              </a>
+              <router-link class="avatar" :to="'/user/' + subComment.author.id" target="_blank">
+                <img style="border-radius: 50%" :src="subComment.author.avatar">
+              </router-link>
               <div class="content">
-                <a class="author">{{ subComment.author.nickname }}</a>
+                <router-link class="author" :to="'/user/' + subComment.author.id" target="_blank">
+                  {{ subComment.author.nickname }}
+                </router-link>
                 <div class="metadata">
                   <span class="date">{{ subComment.time }}</span>
                   <div class="rating have-hover-color">

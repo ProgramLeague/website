@@ -1,21 +1,115 @@
 <template>
   <div class="outer have-border have-hover-border">
     <div class="top">
-      <span class="top-1">Top 1</span>
+      <div class="identifier">
+        <span>1.</span>
+      </div>
+      <div class="content-outer">
+        <div class="content">
+          <div class="author">
+            <router-link class="router-link" :to="'/user/' + top.author.id" target="_blank">
+              <img class="avatar-img" :src="top.author.avatar">
+              <div class="inner">
+                <span class="nickname">{{ top.author.nickname }}</span>：
+              </div>
+            </router-link>
+          </div>
+          <div class="article need-font">
+            <router-link class="router-link" :to="'/article/' + top.article.uid" target="_blank">
+              <p class="title">{{ top.article.title }}</p>
+              <div class="metadata">
+                <span>
+                  <i class="thumbs up icon"></i>{{ top.article.counter.like }}
+                </span>
+                <span class="hate">
+                  <i class="thumbs down icon"></i>{{ top.article.counter.hate }}
+                </span>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="ui divider"></div>
   </div>
 </template>
 
 <style scoped>
-  .top .top-1 {
-    font-size: 20px;
-    font-weight: 600;
+  .top .content .article .metadata {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .top .content .article .metadata .hate {
+    margin-left: 6px;
+  }
+
+  .top .content .article .title {
+    font-size: 26px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .top .content .author .avatar-img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .top .content .author .inner {
+    display: inline-block;
+    position: relative;
+    bottom: 8px;
+    margin-left: 4px;
+  }
+
+  .top .content .author .inner .nickname {
+    font-size: 16px;
+  }
+
+  .top .content .author {
+    position: relative;
+  }
+
+  .top .content {
+    margin-top: 4px;
+    text-align: left;
+    width: 80%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .top .content-outer {
+    width: 100%;
+    margin-top: -14px;
+  }
+
+  .top .identifier {
+    position: relative;
+    left: -4px;
+    top: 12px;
+    font-size: 38px;
+    font-weight: 500;
+  }
+
+  .author .nickname {
+    color: rgba(0, 0, 0, .7)
+  }
+
+  .avatar-img {
+    border-radius: 50%;
   }
 
   .outer {
     height: 92%;
     width: 100%;
     padding: 14px;
+  }
+
+  .router-link {
+    color: black
+  }
+
+  .router-link:hover {
+    color: var(--theme-color)
   }
 
 </style>
@@ -33,12 +127,18 @@
         let thisArticle = {}
         thisArticle.order = i
         thisArticle.article = FakeData.article
+        thisArticle.article.counter = {}
+        thisArticle.article.counter.like = 346
+        thisArticle.article.counter.hate = 4
         thisArticle.author = FakeData.author
         articleArray.push(thisArticle)
       }
       articles.top = {}
       articles.top.author = FakeData.author
       articles.top.article = FakeData.article
+      articles.top.article.counter = {}
+      articles.top.article.counter.like = 346
+      articles.top.article.counter.hate = 4
       articles.articles = articleArray
       return articles
     }
