@@ -80,6 +80,7 @@
   .have-border {
     border: 1px solid rgba(0, 0, 0, .05);
     border-radius: 3px;
+    overflow: hidden;
   }
 
   .have-hover-border:hover {
@@ -238,7 +239,7 @@
     },
     data() {
       let nextColumnId = 0
-      let img = "https://raw.githubusercontent.com/ProgramLeague/website/master/img/kafai-liu-485751-unsplash.jpg"
+      let img = FakeData.img
       let articles = FakeData.articles
       return {
         columns: [{

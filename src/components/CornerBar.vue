@@ -85,15 +85,9 @@
     mounted: function () {
       let b2t = $('.corner-bar .b2t')
       let adSwitch = $('.corner-bar .ad-switch')
-      adSwitch.mouseenter(function () {
-        $('.corner-bar .ad-switch .button .svg svg').css('stroke', 'var(--theme-color)')
-      })
-      adSwitch.mouseleave(function () {
-        $('.corner-bar .ad-switch .button .svg svg').css('stroke', 'black')
-      })
-      adSwitch.click(function () {
-        $('.corner-bar .ad-switch .button .svg').show()
-      })
+      adSwitch.mouseenter(() => $('.corner-bar .ad-switch .button .svg svg').css('stroke', 'var(--theme-color)'))
+      adSwitch.mouseleave(() => $('.corner-bar .ad-switch .button .svg svg').css('stroke', 'black'))
+      adSwitch.click(() => $('.corner-bar .ad-switch .button .svg').show())
       b2t.click(function () {
         $('html, body').animate({
           scrollTop: 0

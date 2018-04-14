@@ -40,8 +40,8 @@
               <router-link :to="'/user/' + row.id" target="_blank" class="router-link">
                 <img class="avatar-img" :src="row.avatar">
                 <div class="info sub-no-margin">
-                  <p class="nickname">{{ row.nickname }}</p>
-                  <p class="bio">{{ row.bio }}</p>
+                  <p class="no-wrap nickname">{{ row.nickname }}</p>
+                  <p class="no-wrap bio">{{ row.bio }}</p>
                 </div>
                 <div class="metadata sub-no-margin">
                   <router-link :to="'/user/' + row.id" target="_blank">
@@ -110,7 +110,6 @@
     padding-left: 3px;
     padding-bottom: 0;
     margin-top: -1px;
-    white-space: nowrap;
     overflow: hidden;
     width: 100%;
   }

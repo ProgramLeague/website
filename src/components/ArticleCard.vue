@@ -39,6 +39,7 @@
     margin-top: 16px;
     margin-bottom: 6px;
     margin-right: 16px;
+    border-radius: 3px;
   }
 
   .author {
