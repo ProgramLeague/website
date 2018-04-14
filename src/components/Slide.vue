@@ -86,8 +86,9 @@
 <script>
   import Swiper from 'swiper'
   import {
-    immediateFileCommand
-  } from '../../node_modules/_node-notifier@5.2.1@node-notifier/lib/utils';
+    FakeData
+  } from '../utils/utils'
+
   export default {
     mounted: function () {
       new Swiper('.swiper-container', {
@@ -123,7 +124,7 @@
     },
     data() {
       let nextSlideId = 0
-      let img = "https://raw.githubusercontent.com/ProgramLeague/website/master/img/kafai-liu-485751-unsplash.jpg"
+      let img = FakeData.img
       return {
         slides: [{
             _key: nextSlideId++,
