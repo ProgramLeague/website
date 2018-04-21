@@ -9,16 +9,19 @@
           <div class="ui three column stackable grid">
             <div class="aliged five wide column">
               <span class="function-name">热门评论</span>
+              <a class="function-more" target="_blank" href="">更多 >></a>
               <TopComments class="inner" />
             </div>
 
             <div class="aliged center six wide column">
               <span class="function-name">全站最佳</span>
+              <a class="function-more" target="_blank" href="">更多 >></a>
               <TopContributors id="top-contributors" class="inner" />
             </div>
 
             <div class="aliged five wide column">
               <span class="function-name">热门文章</span>
+              <a class="function-more" target="_blank" href="">更多 >></a>
               <TopArticles class="inner" />
             </div>
 

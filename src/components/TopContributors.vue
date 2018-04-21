@@ -6,7 +6,9 @@
 
         <div class="content">
           <div class="author">
-            <img class="avatar-img" :src="data.top.avatar">
+            <router-link :to="'/user/' + data.top.id" class="router-link" target="_blank">
+              <img class="avatar-img" :src="data.top.avatar">
+            </router-link>
           </div>
           <div class="info">
             <router-link :to="'/user/' + data.top.id" class="router-link" target="_blank">

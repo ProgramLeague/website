@@ -4,9 +4,7 @@
     <div class="parallax-window" data-parallax="scroll" data-z-index="-1">
       <div class="parallax-slider">
         <div class="ui active dimmer">
-          <div class="content">
-            <img :src="article.backgroundImg" :alt="article.title">
-          </div>
+          <div class="cover" :style="{ backgroundImage: 'url(' + article.backgroundImg + ')' }"></div>
         </div>
         <div class="background" :style="{ backgroundImage: 'url(' + article.backgroundImg + ')' }"></div>
       </div>
@@ -43,18 +41,18 @@
 
 <style scoped>
   #author-outer {
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    top: 320px;
   }
 
   .parallax-slider .background {
     position: relative;
     width: 100%;
     height: 100%;
-    background: #999 50% 50% repeat;
+    background: black 50% 50% repeat;
     color: #fff;
     text-align: center;
-    z-index: 0;
+    z-index: -2;
   }
 
   .parallax-slider .dimmer {
@@ -62,9 +60,16 @@
     /* 两侧的暗度调这个！越高越暗 */
   }
 
-  .parallax-slider .dimmer .content {
+  .parallax-slider .dimmer {
     text-align: center;
     width: 100%;
+  }
+
+  .parallax-slider .dimmer .cover {
+    height: 100%;
+    width: 100%;
+    background: 50% 50% no-repeat;
+    z-index: -1;
   }
 
   .parallax-window .title {

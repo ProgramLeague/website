@@ -2,8 +2,8 @@
   <div class="outer have-border have-hover-border">
     <div class="card-content">
       <div class="image">
-        <router-link class="image" :to="{ name: 'Article', params: { uid: article.uid }}" v-if="article.headerImg" replace>
-          <img :src="article.headerImg" :alt="article.title">
+        <router-link class="image" :to="{ name: 'Article', params: { uid: article.uid }}" v-if="article.header" replace>
+          <img :src="article.header" :alt="article.title">
         </router-link>
       </div>
 
