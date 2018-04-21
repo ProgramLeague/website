@@ -60,6 +60,9 @@ detailed.author = {
     'total-articles': 123,
     influence: 963
   },
+  flag: {
+    admin: true
+  },
   links: {
     ZhiHu: 'https://www.zhihu.com/people/eldath-ray/activities',
     GitHub: 'https://github.com/Ray-Eldath',

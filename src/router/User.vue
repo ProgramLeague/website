@@ -4,6 +4,11 @@
     <div class="container">
       <div class="parallax-window" data-parallax="scroll" :data-image-src="header">
         <div class="ui basic segment aligned content">
+          <div class="flags">
+            <div v-if="flag.admin" class="flag" data-balloon="管理员" data-balloon-pos="down">
+              <img src="https://alioss.g-cores.com/assets/labels/label-admin-180cb4d67a355a593015c265706f5fca4eeb27b7efac2dccdff62fe8ffb6fc44.png">
+            </div>
+          </div>
           <div class="author">
             <div class="avatar">
               <img v-bind:src="avatar">
@@ -12,7 +17,7 @@
               <div class="nickname have-text-shadow">{{ nickname }}</div>
               <div class="bio">
                 <span class="have-text-shadow">{{ bio }}</span>
-                <div class="gender" :data-tooltip="_gender.tooltip" data-position="top right">
+                <div class="gender" :data-balloon="_gender.tooltip" data-balloon-pos="up">
                   <i :class="_gender.class"></i>
                 </div>
               </div>
@@ -56,6 +61,20 @@
 
 <style scoped>
   @import url('../assets/fonts/iconfont.css');
+
+  .flags .flag {
+    margin-left: 14px;
+  }
+
+  .flags .flag img {
+    width: 60px;
+  }
+
+  .flags {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 
   .content .menu .item.active {
     border-color: var(--theme-color) !important
@@ -110,6 +129,12 @@
     border-radius: 50%;
     height: 120px;
     width: 120px;
+  }
+
+  [data-balloon]:after {
+    padding: 0 !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   }
 
   .have-text-shadow {
