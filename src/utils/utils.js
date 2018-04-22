@@ -58,10 +58,12 @@ detailed.author = {
   blog: 'http://ray-eldath.github.io/',
   counter: {
     'total-articles': 123,
-    influence: 963
+    'total-likes': 540,
+    influence: 9563
   },
-  flag: {
-    admin: true
+  label: {
+    admin: true,
+    genie: ['Kotlin', 'Java']
   },
   links: {
     ZhiHu: 'https://www.zhihu.com/people/eldath-ray/activities',

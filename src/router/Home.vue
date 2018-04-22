@@ -41,7 +41,7 @@
 
           <div class="link" v-if="column.to">
             <router-link :to="column.to" class="inner" target="_blank">
-              <div data-tooltip="单击以查看更多" data-inverted="" data-position="top left" class="text">
+              <div data-balloon="单击以查看更多" data-balloon-pos="up" class="text">
                 <p class="title">{{ column.name }}</p>
                 <p v-if="column.description" class="description">{{ column.description }}</p>
               </div>
@@ -78,20 +78,6 @@
     margin-bottom: 40px;
     margin-top: 40px;
     text-align: center;
-  }
-
-  .have-border {
-    border: 1px solid rgba(0, 0, 0, .05);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .have-hover-border:hover {
-    box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.1);
-  }
-
-  .have-hover-color:hover {
-    color: var(--theme-color)
   }
 
   .parallax-window .text .title {

@@ -1,17 +1,7 @@
 <template>
   <div class="corner-bar">
-    <div class="ad-switch">
-      <button class="button">
-        <div class="svg">
-          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 10 10" preserveAspectRatio="none">
-            <path d="M 0 0 L 10 5.2" stroke-width="1.2" />
-          </svg>
-        </div>
-        <span class="text">AD</span>
-      </button>
-    </div>
     <div class="b2t">
-      <button class="button" data-tooltip="回到顶部" data-inverted="" data-position="left center">
+      <button class="button" data-balloon="回到顶部" data-balloon-pos="left">
         <i class="up arrow icon"></i>
       </button>
     </div>
@@ -19,26 +9,6 @@
 </template>
 
 <style scoped>
-  .corner-bar .ad-switch .button .text {
-    width: 40px;
-    font-weight: 600;
-  }
-
-  .corner-bar .ad-switch .button .svg {
-    position: absolute;
-    top: 26px;
-    left: 12px;
-    height: 20px;
-    width: 20px;
-    overflow: hidden;
-    display: none;
-    opacity: .7;
-  }
-
-  .corner-bar .ad-switch .button .svg svg {
-    stroke: black
-  }
-
   .corner-bar>div>button {
     height: 44px;
     width: 44px;
@@ -58,7 +28,6 @@
     border: none;
     border-radius: 4px;
     box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.4);
-    overflow: hidden;
   }
 
   .corner-bar button * {
@@ -84,10 +53,6 @@
   export default {
     mounted: function () {
       let b2t = $('.corner-bar .b2t')
-      let adSwitch = $('.corner-bar .ad-switch')
-      adSwitch.mouseenter(() => $('.corner-bar .ad-switch .button .svg svg').css('stroke', 'var(--theme-color)'))
-      adSwitch.mouseleave(() => $('.corner-bar .ad-switch .button .svg svg').css('stroke', 'black'))
-      adSwitch.click(() => $('.corner-bar .ad-switch .button .svg').show())
       b2t.click(function () {
         $('html, body').animate({
           scrollTop: 0
@@ -100,7 +65,7 @@
         } else {
           b2t.hide();
         }
-      });
+      })
     }
   }
 
