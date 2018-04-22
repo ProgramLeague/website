@@ -51,7 +51,7 @@ detailed.author = {
   gender: 0,
   avatar: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
   header: img,
-  bio: "祈愿的碎片啊，请成为永恒的存在。",
+  bio: "祈愿的碎片啊，请成为永恒的存在。请成为永恒的存在！",
   introduction: "这只是一个<br/>用于测试的<strong>带细节用户信息</strong>",
   email: 'notexist@noerrors.io',
   'show-email': true,

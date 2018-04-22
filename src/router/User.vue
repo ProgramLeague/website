@@ -18,15 +18,11 @@
               <img v-bind:src="avatar">
             </div>
             <div class="info">
-              <div class="nickname have-text-shadow">
-                <span>{{ nickname }}</span>
-              </div>
-              <div class="bio">
-                <span class="have-text-shadow">{{ bio }}</span>
-                <div class="gender" :data-balloon="_gender.tooltip" data-balloon-pos="up">
-                  <i :class="_gender.class"></i>
-                </div>
-              </div>
+              <span class="nickname have-text-shadow">{{ nickname }}</span>
+              <!-- <div class="gender" :data-balloon="_gender.tooltip" data-balloon-pos="up">
+                <i :class="_gender.class"></i>
+              </div> -->
+              <span class="have-text-shadow bio">{{ bio }}</span>
               <div v-if="this['show-email'] || blog !== '' || Object.keys(links).length > 0" class="links have-text-shadow">
                 <a v-if="blog !== ''" :href="blog" target="_blank">
                   <i class="icon linkify"></i>
@@ -56,6 +52,9 @@
       <div class="content">
         <div class="ui stackable two column mobile reversed grid">
           <div class="twelve wide column activities have-border">
+            <!-- <div class="ui basic segment">
+              <span>{{ introduction }}</span>
+            </div> -->
             <div class="ui pointing secondary menu">
               <a class="item active" data-tab="first">First</a>
               <a class="item" data-tab="second">Second</a>
@@ -77,6 +76,11 @@
 <style scoped>
   @import url('../assets/fonts/iconfont.css');
 
+  .content .intro-outer {
+    padding: 0;
+    margin-left: -14px;
+  }
+
   .content .activities .menu {
     margin-top: -4px;
   }
@@ -85,7 +89,7 @@
     margin-top: 26px;
   }
 
-  .content .archivements {
+  .content .functions>div {
     margin-top: 12px;
   }
 
@@ -131,16 +135,14 @@
     font-size: 20px;
   }
 
-  .author .info .bio .gender {
-    display: inline-block;
-    position: relative;
-    top: -28px;
-    left: -44px;
+  .author .info .nickname .gender {
+    float: right;
     color: white;
     font-size: 36px;
   }
 
   .author .bio {
+    display: block;
     font-size: 20px;
   }
 
