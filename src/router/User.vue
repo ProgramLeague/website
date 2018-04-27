@@ -23,6 +23,9 @@
                 <i :class="_gender.class"></i>
               </div> -->
               <span class="have-text-shadow bio">{{ bio }}</span>
+              <button class="circular ui icon toggle button">
+                <i class="inverted icon content"></i>
+              </button>
               <div v-if="this['show-email'] || blog !== '' || Object.keys(links).length > 0" class="links have-text-shadow">
                 <a v-if="blog !== ''" :href="blog" target="_blank">
                   <i class="icon linkify"></i>
@@ -45,7 +48,7 @@
                 </a>
               </div>
             </div>
-            <!-- <div class="introduction">{{ introduction }}</div> -->
+            <div class="introduction">{{ introduction }}</div>
           </div>
         </div>
       </div>
@@ -75,6 +78,25 @@
 
 <style scoped>
   @import url('../assets/fonts/iconfont.css');
+
+  .author .introduction {
+    display: none;
+    float: right;
+    position: relative;
+    left: -160px;
+    height: 140px;
+    padding: 6px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .author .info .button {
+    float: right;
+    position: relative;
+    top: -68px;
+    left: -2px;
+    background: rgba(0, 0, 0, 0.4);
+  }
 
   .content .intro-outer {
     padding: 0;
@@ -230,6 +252,14 @@
   } from 'lodash'
 
   export default {
+    mounted: function () {
+      let toggleButton = $('.author .info .button')
+      let introduction = $('.author .introduction')
+      toggleButton.click(() => {
+        toggleButton.toggleClass('active')
+        introduction.fadeToggle()
+      })
+    },
     data: function () {
       let data = cloneDeep(FakeData.detailed.author)
       if (!data.links) {
