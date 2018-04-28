@@ -13,6 +13,8 @@
               <img src="../assets/labels/genie.png">
             </div>
           </div>
+          <div class="intro-blur"></div>
+          <div class="introduction" v-html="introduction"></div>
           <div class="author">
             <div class="avatar">
               <img v-bind:src="avatar">
@@ -48,7 +50,6 @@
                 </a>
               </div>
             </div>
-            <div class="introduction">{{ introduction }}</div>
           </div>
         </div>
       </div>
@@ -79,22 +80,33 @@
 <style scoped>
   @import url('../assets/fonts/iconfont.css');
 
-  .author .introduction {
+  .content .introduction {
     display: none;
     float: right;
-    position: relative;
-    left: -160px;
-    height: 140px;
+    position: absolute;
+    top: 120px;
+    right: 2px;
+    min-height: 120px;
+    width: 38%;
     padding: 6px;
     border-radius: 6px;
     background: rgba(0, 0, 0, 0.6);
+    color: white;
+  }
+
+  .author .info .button[class~=active] {
+    background-color: white !important;
+  }
+
+  .author .info .button[class~=active] i {
+    color: black;
   }
 
   .author .info .button {
     float: right;
     position: relative;
     top: -68px;
-    left: -2px;
+    left: -6px;
     background: rgba(0, 0, 0, 0.4);
   }
 
@@ -254,7 +266,7 @@
   export default {
     mounted: function () {
       let toggleButton = $('.author .info .button')
-      let introduction = $('.author .introduction')
+      let introduction = $('.content .introduction')
       toggleButton.click(() => {
         toggleButton.toggleClass('active')
         introduction.fadeToggle()

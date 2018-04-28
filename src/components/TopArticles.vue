@@ -39,7 +39,7 @@
         </div>
         <div class="content sub-no-margin">
           <router-link :to="'/user/' + article.author.id" target="_blank" class="router-link">
-            <p class="nickname">{{ article.author.nickname }}：</p>
+            <span class="nickname">{{ article.author.nickname }}：</span>
           </router-link>
           <router-link :to="'/article/' + article.article.uid" target="_blank" class="router-link">
             <p class="title">{{ article.article.title }}</p>
