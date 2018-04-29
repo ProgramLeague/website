@@ -21,6 +21,7 @@ var article = {
   title: "吃荔枝对身体有好处",
   abstract: "荔枝含天然葡萄糖多，还有蛋白质、碳水化合物、多种维生素。补脑，健身，益智；但是多吃上火，会引起体内糖代谢紊乱，造成“荔枝病”(即低血糖)，轻者恶心，出汗，口渴无力；重者头晕，昏迷。荔枝可强身，适当吃并不会导致肥胖。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。特别是儿童。特别是儿童。特别是儿童。",
   category: ["a", "b"],
+  date: "2018-04-12",
   header: img,
   rate: {
     good: 125,
@@ -48,7 +49,7 @@ var detailed = {}
 detailed.author = {
   id: "beta",
   nickname: "Beta",
-  gender: 0,
+  gender: 4,
   avatar: "http://www.semantic-ui.cn/examples/assets/images/avatar/nan.jpg",
   header: img,
   bio: "祈愿的碎片啊，请成为永恒的存在。请成为永恒的存在！",
@@ -71,10 +72,12 @@ detailed.author = {
     StackOverflow: 'https://stackoverflow.com/users/8711684/ray-eldath?tab=profile',
     Twitter: 'https://twitter.com/ray_eldath'
   },
-  articles: [
-    article, article
-  ]
+  articles: []
 }
+detailed.author.articles[0] = cloneDeep(article)
+detailed.author.articles[1] = cloneDeep(article)
+detailed.author.articles[0].order = 0
+detailed.author.articles[1].order = 1
 
 var FakeData = {
   article,

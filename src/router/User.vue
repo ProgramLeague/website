@@ -13,17 +13,32 @@
               <img src="../assets/labels/genie.png">
             </div>
           </div>
-          <div class="intro-blur"></div>
-          <div class="introduction" v-html="introduction"></div>
+          <div class="introduction">
+            <span class="author-gender" :data-balloon="_gender.tooltip" data-balloon-pos="up">
+              <i :class="_gender.class"></i>
+            </span>
+            <div v-html="introduction"></div>
+          </div>
+
+          <div class="ui modal intro-modal">
+            <div class="header">{{ _pro }}的资料</div>
+            <div class="content">
+              <div class="author-gender-mobile" :data-balloon="_gender.tooltip" data-balloon-pos="up">
+                <i :class="_gender.class"></i>：{{ _gender.tooltip }}
+              </div>
+              <div v-html="introduction"></div>
+            </div>
+            <div class="actions">
+              <div class="ui black deny button">关闭</div>
+            </div>
+          </div>
+
           <div class="author">
             <div class="avatar">
               <img v-bind:src="avatar">
             </div>
             <div class="info">
               <span class="nickname have-text-shadow">{{ nickname }}</span>
-              <!-- <div class="gender" :data-balloon="_gender.tooltip" data-balloon-pos="up">
-                <i :class="_gender.class"></i>
-              </div> -->
               <span class="have-text-shadow bio">{{ bio }}</span>
               <button class="circular ui icon toggle button">
                 <i class="inverted icon content"></i>
@@ -55,14 +70,21 @@
       </div>
       <div class="content">
         <div class="ui stackable two column mobile reversed grid">
-          <div class="twelve wide column activities have-border">
-            <!-- <div class="ui basic segment">
-              <span>{{ introduction }}</span>
-            </div> -->
-            <div class="ui pointing secondary menu">
-              <a class="item active" data-tab="first">First</a>
-              <a class="item" data-tab="second">Second</a>
-              <a class="item" data-tab="third">Third</a>
+          <div class="twelve wide column activities">
+            <p class="card-name">{{ _pro }}的文章</p>
+            <div class="articles have-border">
+              <div class="ui stackable two column grid">
+                <div class="column article-item" v-for="article in articles" :key="article.order">
+                  <span class="date">{{ article.date }}</span>
+                  <router-link class="router-link" :to="{ name: 'Article', params: { uid: article.uid }}" target="_blank" replace>
+                    <img class="image" :src="article.header" :alt="article.title">
+                    <span class="title have-hover-text">{{ article.title }}</span>
+                    <div class="abstract to-truncate">
+                      <p>{{ article.abstract }}</p>
+                    </div>
+                  </router-link>
+                </div>
+              </div>
             </div>
           </div>
           <div class="four wide column functions">
@@ -80,13 +102,70 @@
 <style scoped>
   @import url('../assets/fonts/iconfont.css');
 
+  .article-item .date {
+    float: left;
+    margin-bottom: 6px;
+    opacity: .7;
+  }
+
+  .article-item .abstract {
+    font-size: 16px;
+    color: black;
+    opacity: .7;
+    line-height: 1.4;
+    padding-top: 10px;
+    overflow: hidden;
+    width: 94%;
+  }
+
+  .article-item .title {
+    color: black;
+    font-size: 30px;
+  }
+
+  .article-item .title:hover {
+    color: var(--theme-color)
+  }
+
+  .article-item .image {
+    width: 92%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+
+  .article-item {
+    width: 90%;
+    text-align: left;
+    border-radius: 6px;
+    overflow: hidden;
+    line-height: 1;
+    margin-bottom: 34px;
+  }
+
+  .content .activities .articles {
+    padding: 10px;
+    padding-top: 18px;
+  }
+
+  .content .activities>div {
+    margin-top: 14px;
+  }
+
+  .content .activities .card-name {
+    font-size: 26px;
+    margin-bottom: 0;
+    text-align: center;
+    opacity: .7;
+  }
+
   .content .introduction {
     display: none;
     float: right;
     position: absolute;
-    top: 120px;
+    bottom: -76px;
     right: 2px;
     min-height: 120px;
+    max-height: 144px;
     width: 38%;
     padding: 6px;
     border-radius: 6px;
@@ -115,12 +194,8 @@
     margin-left: -14px;
   }
 
-  .content .activities .menu {
-    margin-top: -4px;
-  }
-
   .content .activities {
-    margin-top: 26px;
+    margin-top: 16px;
   }
 
   .content .functions>div {
@@ -150,10 +225,6 @@
     top: 0;
   }
 
-  .content .menu .item.active {
-    border-color: var(--theme-color) !important
-  }
-
   .author .info .links * {
     color: white;
     opacity: .86;
@@ -169,10 +240,30 @@
     font-size: 20px;
   }
 
-  .author .info .nickname .gender {
-    float: right;
-    color: white;
-    font-size: 36px;
+  .author-gender i {
+    float: left;
+    margin-top: 2px;
+    margin-right: 4px;
+    font-size: 22px;
+  }
+
+  .author-gender-mobile i {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .author-gender-mobile {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 10px;
+    padding: 4px;
+    border-top: solid rgba(0, 0, 0, 0.3) 1px;
+    border-bottom: solid rgba(0, 0, 0, 0.3) 1px;
+  }
+
+  .author-gender-mobile i {
+    font-size: 16px;
+    font-weight: bold;
   }
 
   .author .bio {
@@ -226,6 +317,10 @@
     .author .avatar {
       display: block;
     }
+
+    .author .info .button {
+      top: -10px;
+    }
   }
 
   .author {
@@ -237,6 +332,11 @@
   .parallax-window {
     min-height: 320px;
     background: transparent;
+  }
+
+  .have-hover-text:hover {
+    color: var(--theme-color);
+    border-bottom: solid var(--theme-color) 2px;
   }
 
   .container {
@@ -251,6 +351,7 @@
 </style>
 
 <script>
+  import ArticleCard from '../components/ArticleCard'
   import NavBar from '../components/NavBar'
   import Footer from '../components/Footer'
   import CornerBar from '../components/CornerBar'
@@ -262,14 +363,40 @@
   import {
     cloneDeep
   } from 'lodash'
+  import device from 'current-device'
 
   export default {
     mounted: function () {
       let toggleButton = $('.author .info .button')
       let introduction = $('.content .introduction')
-      toggleButton.click(() => {
-        toggleButton.toggleClass('active')
-        introduction.fadeToggle()
+      let buttonClick = $(window).width() <= 767 ?
+        (() => $('.intro-modal').modal('show')) :
+        (() => {
+          toggleButton.toggleClass('active')
+          introduction.fadeToggle()
+        })
+      toggleButton.click(buttonClick)
+      $(".to-truncate").dotdotdot({
+        callback: function () {},
+        /* Function invoked after truncating the text.
+           Inside this function, "this" refers to the wrapper. */
+        ellipsis: "\u2026 ",
+        /* The text to add as ellipsis. */
+        height: 100,
+        /* The (max-)height for the wrapper:
+           null: measure the CSS (max-)height ones;
+           a number: sets a specific height in pixels;
+           "watch": re-measures the CSS (max-)height in the "watch". */
+        keep: $(".to-truncate"),
+        /* jQuery-selector for elements to keep after the ellipsis. */
+        tolerance: 0,
+        /* Deviation for the measured wrapper height. */
+        truncate: "letter",
+        /* How to truncate the text: By "node", "word" or "letter". */
+        watch: "window",
+        /* Whether to update the ellipsis: 
+           true: Monitors the wrapper width and height;
+           "window": Monitors the window width and height. */
       })
     },
     data: function () {
@@ -307,7 +434,7 @@
           prop = "他"
         else if (this.gender === 2)
           prop = "她"
-        else prop = "这位用户"
+        else prop = "TA"
         return prop
       },
       _genie: function () {
@@ -317,6 +444,7 @@
       }
     },
     components: {
+      ArticleCard,
       NavBar,
       Footer,
       CornerBar,

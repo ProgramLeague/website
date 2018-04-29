@@ -95,11 +95,6 @@
     text-align: left;
   }
 
-  #article-markdown {
-    font-size: 16px;
-    line-height: 1.8;
-  }
-
   .title {
     font-size: 34px;
     font-weight: bold
@@ -172,6 +167,7 @@
     margin-bottom: 36px;
     line-height: 22px;
     vertical-align: middle;
+    opacity: .8;
   }
 
   .author .info * {
@@ -181,7 +177,7 @@
   }
 
   .author .info:hover {
-    color: var(--theme-color)
+    opacity: 1;
   }
 
   .author .info .nickname {
@@ -208,8 +204,8 @@
       Footer
     },
     mounted: function () {
-      $('.author .info').mouseenter(() => $('.author .info *').css('color', 'var(--theme-color)'))
-      $('.author .info').mouseleave(() => $('.author .info *').css('color', 'white'))
+      $('.author .info').mouseenter(() => $('.author .info *').css('opaciaty', '1'))
+      $('.author .info').mouseleave(() => $('.author .info *').css('opaciaty', '.8'))
     },
     data() {
       return {
@@ -219,7 +215,7 @@
           abstract: "荔枝含天然葡萄糖多，还有蛋白质、碳水化合物、多种维生素。补脑，健身，益智；但是多吃上火，会引起体内糖代谢紊乱，造成“荔枝病”(即低血糖)，轻者恶心，出汗，口渴无力；重者头晕，昏迷。荔枝可强身，适当吃并不会导致肥胖。荔枝新鲜上市，味虽美却不宜多吃，特别是儿童。",
           category: ["a", "b"],
           backgroundImg: FakeData.img,
-          content: "<p>对对对，就是这样。</p> <p>asdsd</p>"
+          content: "<p>对对对，就是这样。</p> <p>asdsd</p><h1>ALPHA</h1><h3>beta</h3></br><p>khj</p>"
         },
         author: {
           id: "beta",

@@ -5,6 +5,7 @@ import Home from './Home.vue'
 import User from './User.vue'
 import Article from './Article.vue'
 import Stack from './Stack.vue'
+import Test from './Test.vue'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/stack/:id',
       name: 'Stack',
       component: Stack
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: Test
     }
   ]
 })

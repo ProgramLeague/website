@@ -1,0 +1,13 @@
+/*******************************
+        Global Overrides
+*******************************/
+
+/*-------------------
+    Brand Colors
+--------------------*/
+
+@primaryColor        : #5885FF;
+@secondaryColor      : @black;
+
+@lightPrimaryColor   : @lightBlue;
+@lightSecondaryColor : @lightBlack;

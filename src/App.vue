@@ -11,7 +11,7 @@
 
 <style>
   :root {
-    --theme-color: rgb(88, 133, 255);
+    --theme-color: #5885FF;
     --theme-color-light: rgb(227, 235, 255);
   }
 
@@ -32,6 +32,10 @@
 
   .have-hover-color:hover {
     color: var(--theme-color)
+  }
+
+  .router-link {
+    color: black;
   }
 
   [data-balloon]:after {
