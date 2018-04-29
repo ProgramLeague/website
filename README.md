@@ -1,19 +1,22 @@
-# NoErrors(s) [![Build Status](https://travis-ci.org/ProgramLeague/website.svg?branch=master&style=flat-square)](https://travis-ci.org/ProgramLeague/website)
+# NoErrors(s)
 
 > Build completed, no error(s) occurred.
 
 ![屏幕截图](https://raw.githubusercontent.com/ProgramLeague/website/master/img/screenshot.jpg)
 
 > 截图中图片看不见是因为视差效果 ;)
-> 屏幕截图可能不是最新版本，建议自行克隆后使用`npm run dev`查看。
+>
+> 屏幕截图*可能不是最新版本*，建议自行克隆后使用`npm run dev`查看。
 
-咋们是不是一直计划搭个网站的啊...
+咋们是不是一直计划搭个网站的啊...（**招募后端！**）
+
 ## 依赖
  - jQuery
  - jQuery.dotdotdot
  - Vue.js 
  - Semantic UI
  - Swiper
+ - Lodash
  - Font Awesome
 
 ## 构建步骤
