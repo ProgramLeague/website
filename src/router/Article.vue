@@ -1,7 +1,7 @@
 <template>
   <div>
-    <NavBar/>
-    <div class="parallax-window" data-parallax="scroll" data-z-index="-1">
+    <nav-bar/>
+    <div class="parallax-window header-parallax" data-parallax="scroll" data-z-index="-1">
       <div class="parallax-slider">
         <div class="ui active dimmer">
           <div class="cover" :style="{ backgroundImage: 'url(' + article.backgroundImg + ')' }"></div>
@@ -34,7 +34,12 @@
         <div id="article-markdown" class="ui basic segment aligned" v-html="article.content"></div>
       </div>
     </div>
-
+    <recommend-articles/>
+    <div class="ui container">
+      <div class="content">
+        <article-comments id="article-comments" />
+      </div>
+    </div>
     <Footer/>
   </div>
 </template>
@@ -72,13 +77,13 @@
     z-index: -1;
   }
 
-  .parallax-window .title {
+  .header-parallax .title {
     position: absolute;
     text-align: center;
     width: 100%;
   }
 
-  .parallax-window .title p {
+  .header-parallax .title p {
     height: 400px;
     line-height: 400px;
     color: white;
@@ -87,7 +92,7 @@
     text-shadow: 5px 5px 6px hsla(0, 0%, 0%, 0.4);
   }
 
-  .parallax-window {
+  .header-parallax {
     width: 100%;
     height: 400px;
     line-height: 200px;
@@ -193,6 +198,9 @@
 <script>
   import NavBar from '../components/NavBar'
   import Footer from '../components/Footer'
+  import RecommendArticles from '../components/RecommendArticles'
+  import ArticleComments from '../components/ArticleComments'
+
   import {
     FakeData
   } from '../utils/utils'
@@ -201,7 +209,9 @@
     name: 'Article',
     components: {
       NavBar,
-      Footer
+      Footer,
+      RecommendArticles,
+      ArticleComments
     },
     mounted: function () {
       $('.author .info').mouseenter(() => $('.author .info *').css('opaciaty', '1'))

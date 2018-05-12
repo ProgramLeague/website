@@ -4,13 +4,20 @@
       <p>{{ article.date }}</p>
     </div>
 
-    <div class="sized have-border">
+    <div class="sized have-border have-hover-border">
       <div class="header">
         <router-link :to="'/article/' + article.uid" target="_blank">
           <img :src="article.header" :alt="article.title">
         </router-link>
 
-        <div class="tags">
+        <div class="stack solid-bg">
+          <router-link :to="'/stack/' + article.stack.name" target="_blank">
+            <div class="color" style="display: inline-block" :style="{ backgroundColor: article.stack.color }"></div>
+            <span>{{ article.stack.name }}</span>
+          </router-link>
+        </div>
+
+        <div class="tags solid-bg">
           <i class="hashtag icon"></i>
           <router-link v-for="tag in article.tags" :key="tag" :to="'/search?tag=' + tag" target="_blank">
             <span>{{ tag }}</span>
@@ -56,12 +63,11 @@
 
 <style scoped>
   .author .info * {
-    color: black;
-    opacity: .8;
+    color: rgba(0, 0, 0, .7);
   }
 
-  .author .info .nickname {
-    opacity: 1;
+  .author .nickname {
+    color: black;
   }
 
   .author .info {
@@ -87,18 +93,35 @@
     padding: 10px;
   }
 
-  .header .tags {
+  .header .stack {
     position: absolute;
     top: 10px;
     left: 10px;
-    opacity: .8;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .header .stack span {
+    color: white;
+  }
+
+  .header .stack span:hover {
+    text-decoration: underline;
+  }
+
+  .header .stack .color {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+  }
+
+  .header .tags {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding-right: 0;
     color: white;
     font-size: 15px;
-
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 4px;
-    padding-right: 0;
-    border-radius: 4px;
   }
 
   .header .tags:hover {
@@ -112,6 +135,17 @@
 
   .header .tags a:hover {
     text-decoration: underline;
+  }
+
+  .header .solid-bg {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 4px;
+    border-radius: 4px;
+    opacity: .8;
+  }
+
+  .header .solid-bg:hover {
+    opacity: 1;
   }
 
   .bottom {
@@ -195,7 +229,7 @@
            null: measure the CSS (max-)height ones;
            a number: sets a specific height in pixels;
            "watch": re-measures the CSS (max-)height in the "watch". */
-        keep: $(".to-truncate-80"),
+        keep: $(".to-truncate"),
         /* jQuery-selector for elements to keep after the ellipsis. */
         tolerance: 0,
         /* Deviation for the measured wrapper height. */

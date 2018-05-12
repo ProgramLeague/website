@@ -20,7 +20,7 @@
   .footer {
     width: 100%;
     height: 260px;
-    margin-top: 100px;
+    margin-top: 70px;
     text-align: center;
     color: white;
     background-color: rgb(112, 112, 113);

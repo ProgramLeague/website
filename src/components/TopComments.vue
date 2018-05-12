@@ -32,7 +32,7 @@
               </a>
             </div>
           </div>
-          <div v-if="comment.comments" v-for="subComment in comment.comments" :key="subComment.order" class="comments">
+          <div v-if="comment.reply" v-for="subComment in comment.reply" :key="subComment.order" class="comments">
             <div class="comment">
               <router-link class="avatar" :to="'/user/' + subComment.author.id" target="_blank">
                 <img style="border-radius: 50%" :src="subComment.author.avatar">
@@ -108,24 +108,8 @@
 
   export default {
     data: function () {
-      let author = FakeData.author
-      let article = FakeData.article
       return {
-        comments: [{
-          order: 0,
-          author: author,
-          article: article,
-          comments: [{
-            order: 0,
-            author: author,
-            content: "一条评论",
-            time: "不久前",
-            rate: 1230
-          }],
-          content: "一条评论",
-          time: "不久前",
-          rate: 1993
-        }]
+        comments: [FakeData.comment]
       }
     }
   }

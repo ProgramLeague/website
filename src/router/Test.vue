@@ -1,13 +1,13 @@
 <template>
   <div>
     <nav-bar/>
-    <new-article-card :article="article" :author="author" />
+    <article-comments/>
   </div>
 </template>
 
 <script>
   import NavBar from '../components/NavBar'
-  import NewArticleCard from '../components/NewArticleCard'
+  import ArticleComments from '../components/ArticleComments'
 
   import {
     FakeData
@@ -16,13 +16,7 @@
   export default {
     components: {
       NavBar,
-      NewArticleCard
-    },
-    data: function () {
-      return {
-        article: FakeData.article,
-        author: FakeData.author
-      }
+      ArticleComments
     }
   }
 
