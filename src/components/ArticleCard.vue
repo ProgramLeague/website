@@ -127,6 +127,12 @@
     font-size: 14px;
     line-height: 1.8;
     margin-top: 6px;
+    overflow: hidden;
+  }
+
+  .card-content {
+    height: 100%;
+    width: 100%;
   }
 
   .image {

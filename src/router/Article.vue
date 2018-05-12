@@ -42,7 +42,7 @@
 <style scoped>
   #author-outer {
     position: relative;
-    top: 320px;
+    top: 332px;
   }
 
   .parallax-slider .background {

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <NavBar/>
-    <Slide/>
-    <CornerBar/>
+    <nav-bar/>
+    <slide/>
+    <corner-bar/>
     <div class="content">
       <div id="header">
         <div class="ui container">
@@ -10,19 +10,19 @@
             <div class="aliged five wide column">
               <span class="function-name">热门评论</span>
               <a class="function-more" target="_blank" href="">更多 >></a>
-              <TopComments class="inner" />
+              <top-comments class="inner" />
             </div>
 
             <div class="aliged center six wide column">
               <span class="function-name">全站最佳</span>
               <a class="function-more" target="_blank" href="">更多 >></a>
-              <TopContributors id="top-contributors" class="inner" />
+              <top-contributors id="top-contributors" class="inner" />
             </div>
 
             <div class="aliged five wide column">
               <span class="function-name">热门文章</span>
               <a class="function-more" target="_blank" href="">更多 >></a>
-              <TopArticles class="inner" />
+              <top-articles class="inner" />
             </div>
 
           </div>
@@ -31,7 +31,7 @@
           <div class="ui container">
             <span class="function-name">技术栈</span>
             <a class="function-more" target="_blank" href="">更多 >></a>
-            <StackList/>
+            <stack-list/>
           </div>
         </div>
       </div>
@@ -59,8 +59,8 @@
           <div class="article-list ui vertical stripe segment content">
             <!-- TODO：显示问题。 <span class="function-name narrow-hidden">最新文章</span> -->
             <div class="article-cards ui three column stackable grid">
-              <ArticleCard class="five wide column" v-for="article in column.articles" :key="article._key" :article="article.article" :author="article.author"
-              />
+              <new-article-card class="five wide column" v-for="article in column.articles" :key="article._key" :article="article.article"
+                :author="article.author" />
             </div>
           </div>
         </div>
@@ -178,7 +178,8 @@
   import Slide from '../components/Slide'
   import NavBar from '../components/NavBar'
   import Footer from '../components/Footer'
-  import ArticleCard from '../components/ArticleCard'
+  // import ArticleCard from '../components/ArticleCard'
+  import NewArticleCard from '../components/NewArticleCard'
   import StackList from '../components/StackList'
   import TopContributors from '../components/TopContributors'
   import TopArticles from '../components/TopArticles'
@@ -194,7 +195,8 @@
       CornerBar,
       Slide,
       NavBar,
-      ArticleCard,
+      // ArticleCard,
+      NewArticleCard,
       StackList,
       Footer,
       TopComments,
