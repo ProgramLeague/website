@@ -1,7 +1,6 @@
 <template>
   <div>
     <nav-bar/>
-    <article-comments/>
   </div>
 </template>
 
@@ -14,9 +13,11 @@
   } from '../utils/utils'
 
   export default {
+    mounted: function () {
+     
+    },
     components: {
-      NavBar,
-      ArticleComments
+      NavBar
     }
   }
 

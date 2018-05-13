@@ -37,7 +37,7 @@
     <recommend-articles/>
     <div class="ui container">
       <div class="content">
-        <article-comments id="article-comments" />
+        <article-comments id="article-comments" :article="article" />
       </div>
     </div>
     <Footer/>
@@ -136,7 +136,7 @@
     font-family: -apple-system, SF UI Display, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
   }
 
-  .content {
+  .container .content {
     width: 690px;
     margin: 10px auto;
   }

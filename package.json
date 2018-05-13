@@ -11,9 +11,12 @@
     "test": "node build/build.js"
   },
   "dependencies": {
+    "codemirror": "^5.37.0",
     "current-device": "^0.7.7",
+    "highlight.js": "^9.12.0",
     "lodash": "^4.17.5",
     "semantic-ui": "^2.3.1",
+    "tui-editor": "^1.1.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
