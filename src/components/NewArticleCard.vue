@@ -160,11 +160,16 @@
   }
 
   .abstract p {
-    color: rgba(0, 0, 0, 0.65);
+    opacity: .65;
+    color: black;
     font-size: 15px;
     line-height: 1.8;
     margin-top: 6px;
     overflow: hidden;
+  }
+
+  .abstract p:hover {
+    opacity: .75;
   }
 
   .title span {
@@ -176,11 +181,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    opacity: .9;
   }
 
   .title span:hover {
-    color: var(--theme-color);
-    text-decoration: underline;
+    opacity: 1;
   }
 
   .content {

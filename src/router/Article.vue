@@ -34,7 +34,7 @@
         <div id="article-markdown" class="ui basic segment aligned" v-html="article.content"></div>
       </div>
     </div>
-    <recommend-articles/>
+    <recommend-articles id="recommend-articles" />
     <div class="ui container">
       <div class="content">
         <article-comments id="article-comments" :article="article" />
@@ -45,6 +45,11 @@
 </template>
 
 <style scoped>
+  #recommend-articles {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
   #author-outer {
     position: relative;
     top: 332px;

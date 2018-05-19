@@ -1,26 +1,24 @@
 <template>
-  <div class="parallax-window" data-parallax="scroll" :data-image-src="background" data-z-index="-1">
-    <div class="outer">
-      <div class="ui equal width stackable grid">
-        <div v-for="article in articles" :key="article._key" class="column card have-border have-hover-border">
-          <div class="header">
+  <div class="outer">
+    <div class="ui equal width stackable grid">
+      <div v-for="article in articles" :key="article._key" class="column card have-border have-hover-border">
+        <div class="header">
+          <router-link :to="'/article/' + article.uid">
+            <img :src="article.header" :alt="article.title">
+          </router-link>
+        </div>
+
+        <div class="content">
+          <div class="title need-fonts">
             <router-link :to="'/article/' + article.uid">
-              <img :src="article.header" :alt="article.title">
+              <span>{{ article.title }}</span>
             </router-link>
           </div>
 
-          <div class="content">
-            <div class="title need-fonts">
-              <router-link :to="'/article/' + article.uid">
-                <span>{{ article.title }}</span>
-              </router-link>
-            </div>
-
-            <div class="abstract need-fonts">
-              <router-link :to="'/article/' + article.uid">
-                <p class="to-truncate_">{{ article.abstract }}</p>
-              </router-link>
-            </div>
+          <div class="abstract need-fonts">
+            <router-link :to="'/article/' + article.uid">
+              <p class="to-truncate_">{{ article.abstract }}</p>
+            </router-link>
           </div>
         </div>
       </div>
@@ -30,7 +28,8 @@
 
 <style scoped>
   .title span {
-    color: #333;
+    color: rgb(0, 0, 0);
+    opacity: .8;
     font-size: 23px;
     font-weight: bold;
     line-height: 1.2;
@@ -41,16 +40,21 @@
   }
 
   .title span:hover {
-    color: var(--theme-color);
-    text-decoration: underline;
+    opacity: 1;
   }
 
   .abstract p {
-    color: rgba(0, 0, 0, 0.65);
+    color: black;
     font-size: 15px;
     line-height: 1.4;
     margin-top: 6px;
     overflow: hidden;
+
+    opacity: .65;
+  }
+
+  .abstract p:hover {
+    opacity: .75;
   }
 
   .card .content {
@@ -72,23 +76,26 @@
     background: white;
     border-radius: 6px;
     position: relative;
+    box-shadow: 1px 4px 8px 0 hsla(0, 0%, 0%, 0.1);
 
     transition: 0.1s ease-in-out;
   }
 
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 4px 0 hsla(0, 0%, 0%, 0.4);
+    box-shadow: 1px 4px 4px 0 hsla(0, 0%, 0%, 0.2);
+  }
+
+  .outer .grid {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .outer {
     padding-left: 130px;
     padding-right: 130px;
-  }
 
-  .parallax-window {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    background-color: rgba(0, 0, 0, 0.08);
   }
 
 </style>
