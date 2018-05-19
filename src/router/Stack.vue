@@ -80,7 +80,7 @@
     position: relative;
     padding: 40px;
     border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: white;
     box-shadow: 2px 3px 10px hsla(0, 0%, 0%, .4);
   }
 
