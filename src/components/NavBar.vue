@@ -16,12 +16,16 @@
             <i class="search link icon"></i>
           </div>
         </div>
+        <div class="item" id="login-button">
+          <button class="ui primary button" @click="showLoginModel">登录</button>
+        </div>
 
         <a class="item" id="nav-sidebar-button">
           <i class="big content icon"></i>
         </a>
       </div>
     </div>
+    <login-model id="login-model" />
 
     <div class="ui right big sidebar vertical menu" id="nav-sidebar">
       <router-link class="item" v-for="item in items" :class="{ active: isThisPage(item.item.href) }" :key="item._key" :to="item.item.href">{{ item.item.content }}</router-link>
@@ -117,6 +121,11 @@
     }
   }
 
+  #login-model {
+    z-index: 1000;
+    text-align: left;
+  }
+
   .nav {
     z-index: 1070;
     border-radius: 0 !important;
@@ -133,6 +142,8 @@
 
 <script>
   import StackList from '../components/StackList'
+  import LoginModel from '../components/LoginModel'
+
   export default {
     data() {
       let itemId = 0
@@ -173,6 +184,9 @@
           .replace(window.location.host, "")
           .split("/")[1]
         return thisName === href
+      },
+      showLoginModel: function () {
+        $('#login-model').dimmer('show')
       }
     },
     mounted: function () {
@@ -184,7 +198,8 @@
       })
     },
     components: {
-      StackList
+      StackList,
+      LoginModel
     }
   }
 

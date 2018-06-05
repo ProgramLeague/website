@@ -14,7 +14,6 @@
 
   export default {
     mounted: function () {
-     
     },
     components: {
       NavBar
