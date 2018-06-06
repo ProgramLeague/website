@@ -5,34 +5,30 @@
     <corner-bar/>
     <div class="content">
       <div id="header">
-        <div class="ui container">
-          <div class="ui three column stackable grid">
-            <div class="aliged five wide column">
-              <span class="function-name">热门评论</span>
-              <a class="function-more" target="_blank" href="">更多 >></a>
-              <top-comments class="inner" />
-            </div>
+        <div class="ui three column stackable grid">
+          <div class="aliged four wide column">
+            <span class="function-name">热门评论</span>
+            <a class="function-more" target="_blank" href="">更多 >></a>
+            <top-comments class="inner" />
+          </div>
 
-            <div class="aliged center six wide column">
-              <span class="function-name">全站最佳</span>
-              <a class="function-more" target="_blank" href="">更多 >></a>
-              <top-contributors id="top-contributors" class="inner" />
-            </div>
+          <div class="aliged center six wide column">
+            <span class="function-name">全站最佳</span>
+            <a class="function-more" target="_blank" href="">更多 >></a>
+            <top-contributors id="top-contributors" class="inner" />
+          </div>
 
-            <div class="aliged five wide column">
-              <span class="function-name">热门文章</span>
-              <a class="function-more" target="_blank" href="">更多 >></a>
-              <top-articles class="inner" />
-            </div>
-
+          <div class="aliged six wide column">
+            <span class="function-name">热门文章</span>
+            <a class="function-more" target="_blank" href="">更多 >></a>
+            <top-articles class="inner" />
           </div>
         </div>
+
         <div class="narrow-hidden">
-          <div class="ui container">
-            <span class="function-name">技术栈</span>
-            <a class="function-more" target="_blank" href="">更多 >></a>
-            <stack-list/>
-          </div>
+          <span class="function-name">技术栈</span>
+          <a class="function-more" target="_blank" href="">更多 >></a>
+          <stack-list/>
         </div>
       </div>
 
@@ -107,8 +103,8 @@
   }
 
   #header {
-    margin-left: 2.5%;
-    margin-right: 2.5%;
+    margin-left: 11%;
+    margin-right: 11%;
     margin-bottom: 40px;
   }
 

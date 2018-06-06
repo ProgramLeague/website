@@ -25,10 +25,12 @@
     border: 0;
     box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.4);
     opacity: 0.9;
+    transition: 0.1s ease-in-out;
   }
 
   .stack-item:hover {
     opacity: 1;
+    transform: scale(1.03);
   }
 
   .stack-item .icon {

@@ -85,6 +85,7 @@
   }
 
   .header {
+    margin-top: -1px;
     position: relative;
     padding-top: 40px;
     padding-bottom: 40px;

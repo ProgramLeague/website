@@ -4,7 +4,7 @@
       <div class="top">
         <p class="identifier colored">Top 1</p>
 
-        <div class="content">
+        <div class="content animation-1">
           <div class="author">
             <router-link :to="'/user/' + data.top.id" class="router-link" target="_blank">
               <img class="avatar-img" :src="data.top.avatar">
@@ -35,7 +35,7 @@
       <div class="authors-outer">
         <div class="authors">
           <div class="first">
-            <div v-for="(row, index) in data.authors" :key="row.order" class="row authors-inner-row">
+            <div v-for="(row, index) in data.authors" :key="row.order" class="row authors-inner-row animation-1">
               <div class="identifier">
                 <span :class="{ colored: index < 2 }">{{ index + 2 }}.</span>
               </div>
@@ -66,11 +66,21 @@
 
 <style scoped>
   .router-link {
-    color: black;
+    color: rgba(0, 0, 0, 0.9);
   }
 
   .router-link:hover {
-    color: var(--theme-color) !important
+    color: black;
+  }
+
+  .animation-1 {
+    transition: 0.1s ease-in-out;
+    opacity: .9;
+  }
+
+  .animation-1:hover {
+    transform: scale(1.03);
+    opacity: 1;
   }
 
   .authors-inner-row .identifier {
@@ -104,7 +114,10 @@
   }
 
   .authors-inner-row .info .bio {
-    opacity: .7;
+    opacity: .8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .authors-inner-row {
@@ -155,7 +168,7 @@
   .top .content .info .inner .metadata {
     margin-top: -6px;
     font-size: 14px;
-    opacity: .6;
+    opacity: .7;
   }
 
   @media (max-width: 991px) and (min-width: 767px) {

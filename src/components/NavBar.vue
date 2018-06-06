@@ -4,20 +4,18 @@
       <div class="header item">
         <img src="../assets/logo.png">
       </div>
+      <a class="item nav-item" v-for="item in items" :class="{ active: isThisPage(item.item.href), 'active-nav-item': isThisPage(item.item.href) }"
+        :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
 
-      <div class="ui container" id="header-items">
-        <a class="item" v-for="item in items" :class="{ active: isThisPage(item.item.href) }" :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
-      </div>
-
-      <div class="icon right menu">
-        <div class="item" id="nav-search">
+      <div class="right menu">
+        <div class="ui right aligned item" id="nav-search">
           <div class="ui icon input">
             <input type="text" placeholder="搜索...">
             <i class="search link icon"></i>
           </div>
         </div>
-        <div class="item" id="login-button">
-          <button class="ui primary button" @click="showLoginModel">登录</button>
+        <div class="ui item" id="login-button">
+          <button class="ui primary button" @click="showLoginModel">登录 / 注册</button>
         </div>
 
         <a class="item" id="nav-sidebar-button">
@@ -59,7 +57,7 @@
   }
 
   .nav .header {
-    padding-right: 64px;
+    padding-right: 38px
   }
 
   #nav-stack-list {
@@ -126,6 +124,14 @@
     text-align: left;
   }
 
+  .nav .active-nav-item {
+    color: var(--theme-color) !important;
+  }
+
+  .nav .nav-item {
+    font-size: 18px;
+  }
+
   .nav {
     z-index: 1070;
     border-radius: 0 !important;
@@ -163,7 +169,7 @@
           }, {
             _key: itemId++,
             item: {
-              href: "/stack",
+              href: "/stack/all",
               content: "技术栈"
             }
           },

@@ -182,14 +182,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     opacity: .9;
-
   }
 
   .title span:hover {
     opacity: 1;
-    padding-left: 2px;
-    margin-left: -6px;
-    border-left: var(--theme-color) solid 4px;
   }
 
   .content {

@@ -1,6 +1,7 @@
 <template>
-  <div class="ui page dimmer" id="login">
+  <div class="ui page dimmer" id="login-model">
     <div class="content">
+      <i class="fa fa-close fa-2x close-button" aria-hidden="true"></i>
       <div class="title">
         <i class="fa fa-sign-in" aria-hidden="true" style="margin-right: 2px"></i>
         <span>登录到NoError(s)</span>
@@ -14,7 +15,7 @@
           <label>密码
             <a class="forget" href="">忘记密码？</a>
           </label>
-          <input name="password" placeholder="你猜我猜不猜？" type="text">
+          <input name="password" placeholder="你猜我猜不猜？" type="password">
         </div>
         <div class="inline field">
           <div class="ui checkbox">
@@ -25,10 +26,21 @@
         <div class="ui fluid positive icon submit button">走起！~</div>
         <div class="ui error message"></div>
       </form>
+
+      <!-- TODO：合作网站登录 -->
     </div>
   </div>
 </template>
 <style scoped>
+  .content .close-button {
+    color: black;
+    font-size: 22px;
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    cursor: pointer;
+  }
+
   .content .form .forget {
     float: right;
   }
@@ -63,7 +75,7 @@
 <script>
   export default {
     mounted: function () {
-      $('#login .content form').form({
+      $('#login-model .content .form').form({
         on: 'blur',
         inline: true,
         fields: {
@@ -82,6 +94,9 @@
             }]
           }
         }
+      })
+      $('.content .close-button').click(function () {
+        $('#login-model').dimmer('hide')
       })
     }
   }

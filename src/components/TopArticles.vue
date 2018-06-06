@@ -1,6 +1,6 @@
 <template>
   <div class="outer have-border have-hover-border">
-    <div class="top">
+    <div class="top article">
       <div class="identifier">
         <span class="colored">1.</span>
       </div>
@@ -8,13 +8,10 @@
         <div class="content">
           <div class="author">
             <router-link class="router-link" :to="'/user/' + top.author.id" target="_blank">
-              <img class="avatar-img" :src="top.author.avatar">
-              <div class="inner">
-                <span class="nickname">{{ top.author.nickname }}</span>：
-              </div>
+              <span class="nickname">{{ top.author.nickname }}</span>：
             </router-link>
           </div>
-          <div class="article need-font">
+          <div class="need-font">
             <router-link class="router-link" :to="'/article/' + top.article.uid" target="_blank">
               <p class="title">{{ top.article.title }}</p>
               <div class="metadata">
@@ -33,28 +30,26 @@
     <div class="ui divider"></div>
 
     <div class="articles">
+
       <div class="article" v-for="(article, index) in articles" :key="article.order">
         <div class="identifier" :class="{ colored: index < 2 }">
           <span>{{ index + 2 }}.</span>
         </div>
-        <div class="content sub-no-margin">
-          <router-link :to="'/user/' + article.author.id" target="_blank" class="router-link">
+        <router-link :to="'/article/' + article.article.uid" target="_blank" class="router-link sub-no-margin">
+          <div class="content sub-no-margin">
             <span class="nickname">{{ article.author.nickname }}：</span>
-          </router-link>
-          <router-link :to="'/article/' + article.article.uid" target="_blank" class="router-link">
             <p class="title">{{ article.article.title }}</p>
-          </router-link>
-        </div>
-        <div class="metadata sub-no-margin">
-          <router-link :to="'/article/' + article.article.uid" target="_blank">
+          </div>
+
+          <div class="metadata sub-no-margin">
             <p>
               <i class="outline thumbs up icon"></i>{{ article.article.counter.like }}
             </p>
-            <p class="hate">
+            <p>
               <i class="outline thumbs down icon"></i>{{ article.article.counter.hate }}
             </p>
-          </router-link>
-        </div>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -62,8 +57,8 @@
 
 <style scoped>
   .articles .article .content .nickname {
-    opacity: .7;
     font-size: 16px;
+    color: rgba(0, 0, 0, .8);
   }
 
   .articles .article .content p {
@@ -71,65 +66,45 @@
   }
 
   .articles .article .identifier {
+    display: inline-block;
     font-size: 24px;
     margin-right: 6px;
   }
 
+  .articles .article .content {
+    display: inline-block;
+  }
+
   .articles .article .metadata {
     float: right;
-    overflow: hidden;
-  }
-
-  .articles .article .metadata a {
-    color: rgba(0, 0, 0, 0.7);
-  }
-
-  .articles .article .metadata a:hover {
-    color: rgba(0, 0, 0, 0.8);
   }
 
   .articles .article {
-    overflow: hidden;
     margin-top: 4px;
     height: 44px;
   }
 
-  .articles .article>div {
-    display: inline-block;
-  }
-
-  .top .content .article .metadata {
-    opacity: .6;
-  }
-
-  .top .content .article .metadata .hate {
+  .top .content .metadata .hate {
     margin-left: 6px;
   }
 
-  .top .content .article .title {
+  .top .content .title {
     font-size: 26px;
     font-weight: 500;
     margin: 0;
   }
 
-  .top .content .author .avatar-img {
-    width: 28px;
-    height: 28px;
-  }
-
-  .top .content .author .inner {
+  .top .content .author {
     display: inline-block;
     position: relative;
-    bottom: 8px;
+    left: -4px;
+    bottom: -4px;
     margin-left: 4px;
   }
 
-  .top .content .author .inner .nickname {
-    font-size: 16px;
-  }
-
-  .top .content .author {
-    position: relative;
+  .top .content .author .nickname {
+    font-size: 18px;
+    color: rgba(0, 0, 0, .8);
   }
 
   .top .content {
@@ -153,10 +128,6 @@
     font-weight: 500;
   }
 
-  .author .nickname {
-    opacity: .7;
-  }
-
   .avatar-img {
     border-radius: 50%;
   }
@@ -166,7 +137,7 @@
   }
 
   .colored {
-    color: var(--theme-color)
+    color: var(--theme-color) !important;
   }
 
   .outer {
@@ -175,12 +146,28 @@
     padding: 14px;
   }
 
-  .router-link {
-    color: black
+  .article .content {
+    opacity: .8;
   }
 
-  .router-link:hover {
-    color: var(--theme-color)
+  .article .content:hover {
+    opacity: 1;
+  }
+
+  .article {
+    transition: .1s ease-in-out;
+  }
+
+  .article:hover {
+    transform: scale(1.03);
+  }
+
+  .metadata * {
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  * {
+    color: black;
   }
 
 </style>
