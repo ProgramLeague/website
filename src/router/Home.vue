@@ -25,7 +25,7 @@
           </div>
         </div>
 
-        <div class="narrow-hidden">
+        <div>
           <span class="function-name">技术栈</span>
           <a class="function-more" target="_blank" href="">更多 >></a>
           <stack-list/>
@@ -33,33 +33,7 @@
       </div>
 
       <div v-for="column in columns" :key="column._key">
-        <div class="parallax-window" data-parallax="scroll" :data-image-src="column.img" data-z-index="-1">
-
-          <div class="link" v-if="column.to">
-            <router-link :to="column.to" class="inner" target="_blank">
-              <div data-balloon="单击以查看更多" data-balloon-pos="up" class="text">
-                <p class="title">{{ column.name }}</p>
-                <p v-if="column.description" class="description">{{ column.description }}</p>
-              </div>
-            </router-link>
-          </div>
-          <template v-else>
-            <div class="text">
-              <p class="title">{{ column.name }}</p>
-              <p v-if="column.description" class="description">{{ column.description }}</p>
-            </div>
-          </template>
-        </div>
-
-        <div class="ui container">
-          <div class="article-list ui vertical stripe segment content">
-            <!-- TODO：显示问题。 <span class="function-name narrow-hidden">最新文章</span> -->
-            <div class="article-cards ui three column stackable grid">
-              <new-article-card class="five wide column" v-for="article in column.articles" :key="article._key" :article="article.article"
-                :author="article.author" />
-            </div>
-          </div>
-        </div>
+        <home-column :column="column" />
       </div>
     </div>
     <Footer/>
@@ -67,32 +41,6 @@
 </template>
 
 <style scoped>
-  .parallax-window {
-    width: 100%;
-    height: 200px;
-    line-height: 200px;
-    margin-bottom: 40px;
-    margin-top: 40px;
-    text-align: center;
-  }
-
-  .parallax-window .text .title {
-    color: white;
-    opacity: .86;
-    font-size: 54px;
-    font-weight: 500;
-    height: 200px;
-    line-height: 200px;
-    text-shadow: 5px 5px 6px hsla(0, 0%, 0%, 0.4);
-  }
-
-  .parallax-window .text .description {
-    margin-top: -122px;
-    color: hsla(0, 0%, 100%, 0.7);
-    font-size: 20px;
-    text-shadow: 4px 4px 6px hsla(0, 0%, 0%, 0.4);
-  }
-
   #stack-list {
     margin-top: 4px;
     margin-bottom: 6px;
@@ -123,10 +71,6 @@
     vertical-align: bottom;
   }
 
-  .article-list {
-    margin-top: 24px !important;
-  }
-
   .function-name {
     color: rgba(0, 0, 0, 0.6);
     font-size: 23px;
@@ -154,17 +98,6 @@
     }
   }
 
-  .article-cards {
-    margin-top: -30px !important;
-    list-style: none;
-    margin-left: 3%;
-    padding: 0;
-  }
-
-  .article-cards * {
-    display: inline-block;
-  }
-
 </style>
 
 <script>
@@ -174,8 +107,7 @@
   import Slide from '../components/Slide'
   import NavBar from '../components/NavBar'
   import Footer from '../components/Footer'
-  // import ArticleCard from '../components/ArticleCard'
-  import NewArticleCard from '../components/NewArticleCard'
+  import HomeColumn from '../components/HomeColumn'
   import StackList from '../components/StackList'
   import TopContributors from '../components/TopContributors'
   import TopArticles from '../components/TopArticles'
@@ -192,7 +124,7 @@
       Slide,
       NavBar,
       // ArticleCard,
-      NewArticleCard,
+      HomeColumn,
       StackList,
       Footer,
       TopComments,

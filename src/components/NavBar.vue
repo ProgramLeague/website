@@ -1,42 +1,62 @@
 <template>
   <div class="outer">
     <div class="ui top fixed large borderless menu nav">
-      <div class="header item">
-        <img src="../assets/logo.png">
-      </div>
-      <a class="item nav-item" v-for="item in items" :class="{ active: isThisPage(item.item.href), 'active-nav-item': isThisPage(item.item.href) }"
-        :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
-
-      <div class="right menu">
-        <div class="ui right aligned item" id="nav-search">
-          <div class="ui icon input">
+      <template v-if="searching === true">
+        <div class="item" id="nav-searching">
+          <div class="ui transparent icon massive input">
             <input type="text" placeholder="搜索...">
-            <i class="search link icon"></i>
+            <i class="search icon"></i>
+          </div>
+          <i class="big close icon" @click="toggleSearching()"></i>
+        </div>
+      </template>
+
+      <template v-else>
+        <div class="header item narrow-hidden">
+          <img src="../assets/logo.png">
+        </div>
+
+        <div id="narrow-nav" class="ui left dropdown item narrow-only" style="margin-left: 0 !important;">
+          <i class="big content icon"></i>
+          <div class="menu">
+            <a class="item nav-item" v-for="item in items" :class="{ active: isThisPage(item.item.href), 'active-nav-item': isThisPage(item.item.href) }"
+              :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
+            <div class="divider"></div>
+            <div class="item">
+              <button class="ui fluid primary button" @click="showLoginModel()">登录 / 注册</button>
+            </div>
           </div>
         </div>
-        <div class="ui item" id="login-button">
-          <button class="ui primary button" @click="showLoginModel">登录 / 注册</button>
+
+        <div class="narrow-only center menu" id="narrow-icon">
+          <div class="item">
+            <img src="../assets/logo.png">
+          </div>
         </div>
 
-        <a class="item" id="nav-sidebar-button">
-          <i class="big content icon"></i>
-        </a>
-      </div>
+        <a class="item nav-item narrow-hidden" v-for="item in items" :class="{ active: isThisPage(item.item.href), 'active-nav-item': isThisPage(item.item.href) }"
+          :key="item._key" :href="item.item.href">{{ item.item.content }}</a>
+
+        <div class="right menu item">
+          <div class="narrow-only">
+            <i class="big icon search" @click="toggleSearching()"></i>
+          </div>
+          <div class="ui right aligned item narrow-hidden" id="nav-search">
+            <div class="ui icon input">
+              <input type="text" placeholder="搜索...">
+              <i class="search link icon"></i>
+            </div>
+          </div>
+          <div class="ui item narrow-hidden" id="login-button">
+            <button class="ui primary button" @click="showLoginModel()">登录 / 注册</button>
+          </div>
+        </div>
+      </template>
     </div>
     <login-model id="login-model" />
 
-    <div class="ui right big sidebar vertical menu" id="nav-sidebar">
+    <!-- <div class="ui vertical menu" id="nav-sidebar">
       <router-link class="item" v-for="item in items" :class="{ active: isThisPage(item.item.href) }" :key="item._key" :to="item.item.href">{{ item.item.content }}</router-link>
-
-      <a class="item">
-        当下流行
-        <div class="ui container">
-          <div id="nav-stack-list">
-            <StackList/>
-          </div>
-        </div>
-      </a>
-      <router-link :to="'/stack/all'" id="nav-sidebar-stack-more" target="_blank" class="item">更多 >></router-link>
 
       <div class="item">
         <div class="ui icon input" id="nav-sidebar-search">
@@ -44,28 +64,29 @@
           <i class="search link icon"></i>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <style scoped>
-  #nav-sidebar-stack-more {
-    float: right;
-    font-size: 14px;
-    opacity: .7;
-    z-index: 2000;
+  #nav-searching .close {
+    position: absolute;
+    right: -50px;
+    opacity: .6;
+    font-size: 32px;
+  }
+
+  #nav-searching .input {
+    width: 120% !important;
+  }
+
+  #nav-searching {
+    height: 58px;
+    position: relative;
   }
 
   .nav .header {
     padding-right: 38px
-  }
-
-  #nav-stack-list {
-    width: 246px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    margin-left: -15px;
-    margin-right: auto;
   }
 
   #header-items .active {
@@ -76,46 +97,20 @@
     font-size: 1.1em
   }
 
-  #nav-sidebar {
-    opacity: .9;
-    background-color: var(--theme-color);
-  }
-
-  #nav-sidebar .item {
-    color: white
-  }
-
-  #nav-sidebar .active {
-    font-weight: 600;
-  }
-
-  #nav-sidebar .item:hover {
-    opacity: 1;
-  }
-
-  #nav-sidebar #nav-sidebar-search {
-    opacity: .8;
-  }
-
-  #nav-sidebar-button {
-    display: none
+  .narrow-only,
+  .narrow-only * {
+    display: none !important;
   }
 
   @media(max-width: 767px) {
-    #nav-sidebar-button {
-      display: block;
+    .narrow-only,
+    .narrow-only * {
+      display: block !important;
     }
 
-    #nav-sidebar-button:hover {
-      color: var(--theme-color)
-    }
-
-    #header-items a {
-      display: none
-    }
-
-    #nav-search {
-      display: none
+    .narrow-hidden,
+    .narrow-hidden * {
+      display: none !important;
     }
   }
 
@@ -134,6 +129,7 @@
 
   .nav {
     z-index: 1070;
+    height: 58px;
     border-radius: 0 !important;
     background-color: rgba(255, 255, 255, 0.92);
 
@@ -149,6 +145,7 @@
 <script>
   import StackList from '../components/StackList'
   import LoginModel from '../components/LoginModel'
+  import SearchModel from '../components/SearchModel'
 
   export default {
     data() {
@@ -180,7 +177,8 @@
               content: "关于"
             }
           }
-        ]
+        ],
+        searching: false
       }
     },
     methods: {
@@ -193,19 +191,22 @@
       },
       showLoginModel: function () {
         $('#login-model').dimmer('show')
+      },
+      showSearchModel: function () {
+        $('#search-model').dimmer('show')
+      },
+      toggleSearching: function () {
+        this.searching = !this.searching
+        $('.ui .dropdown').dropdown()
       }
     },
     mounted: function () {
-      $("#nav-sidebar-button").click(function () {
-        // showing multiple
-        $('#nav-sidebar')
-          .sidebar('setting', 'transition', 'overlay')
-          .sidebar('toggle');
-      })
+      $('.ui.dropdown').dropdown();
     },
     components: {
       StackList,
-      LoginModel
+      LoginModel,
+      SearchModel
     }
   }
 

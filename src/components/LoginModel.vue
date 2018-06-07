@@ -95,7 +95,7 @@
           }
         }
       })
-      $('.content .close-button').click(function () {
+      $('#login-model .content .close-button').click(function () {
         $('#login-model').dimmer('hide')
       })
     }
