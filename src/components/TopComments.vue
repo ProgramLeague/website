@@ -2,16 +2,7 @@
   <div class="outer have-border have-hover-border">
     <div class="ui comments top-comments">
       <div v-for="comment in comments" :key="comment.order">
-        <p class="article-title">在：
-          <router-link class="link" :to="{ name: 'Article', params: { uid: comment.article.uid }}" target="_blank">
-            {{ comment.article.title }}
-          </router-link>
-        </p>
-
         <div class="comment outer-comment">
-          <router-link class="avatar" :to="'/user/' + comment.author.id" target="_blank">
-            <img style="border-radius: 50%" :src="comment.author.avatar">
-          </router-link>
           <div class="content">
             <router-link class="author" :to="'/user/' + comment.author.id" target="_blank">
               {{ comment.author.nickname }}
@@ -34,9 +25,6 @@
           </div>
           <div v-if="comment.reply" v-for="subComment in comment.reply" :key="subComment.order" class="comments">
             <div class="comment">
-              <router-link class="avatar" :to="'/user/' + subComment.author.id" target="_blank">
-                <img style="border-radius: 50%" :src="subComment.author.avatar">
-              </router-link>
               <div class="content">
                 <router-link class="author" :to="'/user/' + subComment.author.id" target="_blank">
                   {{ subComment.author.nickname }}
@@ -60,58 +48,64 @@
             </div>
           </div>
         </div>
+
+        <p class="article-title">在：
+          <router-link class="link" :to="{ name: 'Article', params: { uid: comment.article.uid }}" target="_blank">
+            {{ comment.article.title }}
+          </router-link>
+        </p>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-  .outer {
-    height: 92%;
-    width: 100%;
-  }
+.outer {
+  height: 92%;
+  width: 100%;
+}
 
-  .top-comments {
-    padding: 12px;
-    margin: 0;
-  }
+.top-comments {
+  padding: 12px;
+  margin: 0;
+}
 
-  .outer-comment {
-    margin-top: -6px !important;
-  }
+.outer-comment {
+  margin-top: -6px !important;
+}
 
-  .comment .content .actions {
-    margin-top: -3px;
-  }
+.comment .content .actions {
+  margin-top: -3px;
+}
 
-  .comment .content .actions:hover * {
-    color: var(--theme-color);
-  }
+.comment .content .actions:hover * {
+  color: var(--theme-color);
+}
 
-  .article-title,
-  .article-title .link {
-    font-size: 1em;
-    margin: 0;
-    color: rgba(0, 0, 0, .5);
-  }
+.article-title,
+.article-title .link {
+  font-size: 1em;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.5);
+}
 
-  .article-title .link:hover {
-    color: var(--theme-color);
-  }
+.article-title .link:hover {
+  color: var(--theme-color);
+}
 
+.article-title {
+  margin-top: 0px;
+}
 </style>
 
 <script>
-  import {
-    FakeData
-  } from '../utils/utils'
+import { FakeData } from "../utils/utils";
 
-  export default {
-    data: function () {
-      return {
-        comments: [FakeData.comment]
-      }
-    }
+export default {
+  data: function() {
+    return {
+      comments: [FakeData.comment]
+    };
   }
-
+};
 </script>

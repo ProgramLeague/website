@@ -1,28 +1,27 @@
 <template>
   <div>
-    <nav-bar/>
+    <new-article-card :author="author" :article="article" />
   </div>
 </template>
 
 <script>
-  import NavBar from '../components/NavBar'
-  import ArticleComments from '../components/ArticleComments'
+import NewArticleCard from "../components/NewArticleCard";
 
-  import {
-    FakeData
-  } from '../utils/utils'
+import { FakeData } from "../utils/utils";
 
-  export default {
-    mounted: function () {
-    },
-    components: {
-      NavBar
-    }
+export default {
+  mounted: function() {},
+  components: {
+    NewArticleCard
+  },
+  data: function() {
+    return {
+      author: FakeData.author,
+      article: FakeData.article
+    };
   }
-
+};
 </script>
 
 <style>
-
-
 </style>

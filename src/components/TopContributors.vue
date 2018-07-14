@@ -65,218 +65,214 @@
 </template>
 
 <style scoped>
-  .router-link {
-    color: rgba(0, 0, 0, 0.9);
-  }
+.router-link {
+  color: rgba(0, 0, 0, 0.9);
+}
 
-  .router-link:hover {
-    color: black;
-  }
+.router-link:hover {
+  color: black;
+}
 
-  .animation-1 {
-    transition: 0.1s ease-in-out;
-    opacity: .9;
-  }
+.animation-1 {
+  transition: 0.1s ease-in-out;
+  opacity: 0.9;
+}
 
-  .animation-1:hover {
-    transform: scale(1.03);
-    opacity: 1;
-  }
+.animation-1:hover {
+  transform: scale(1.03);
+  opacity: 1;
+}
 
-  .authors-inner-row .identifier {
-    display: inline-block;
-    position: relative;
-    left: -3px;
-    font-size: 24px;
-    width: 18px;
-    overflow: hidden;
-  }
+.authors-inner-row .identifier {
+  display: inline-block;
+  position: relative;
+  left: -3px;
+  font-size: 24px;
+  width: 18px;
+  overflow: hidden;
+}
 
-  .authors-inner-row .metadata {
-    float: right;
-    height: 30px;
-    line-height: 30px;
-  }
+.authors-inner-row .metadata {
+  float: right;
+  height: 30px;
+  line-height: 30px;
+}
 
-  .authors-inner-row .metadata a {
-    color: rgba(0, 0, 0, 0.7);
-  }
+.authors-inner-row .metadata a {
+  color: rgba(0, 0, 0, 0.7);
+}
 
-  .authors-inner-row .metadata a:hover {
-    color: rgba(0, 0, 0, 0.8);
+.authors-inner-row .metadata a:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.authors-inner-row .info {
+  display: inline-block;
+  margin-left: 2px;
+  width: 60% !important;
+  overflow: hidden;
+}
+
+.authors-inner-row .info .bio {
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.authors-inner-row {
+  padding-top: 3px;
+  padding-left: 3px;
+  padding-bottom: 0;
+  margin-top: -1px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.authors-inner-row .avatar-img {
+  width: 36px;
+  height: 36px;
+}
+
+.authors {
+  margin-top: -5px;
+}
+
+.authors-outer {
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-top: 8px;
+}
+
+.top .identifier {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: -6px;
+  margin-bottom: 0;
+}
+
+.top .content {
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+.top .content .info {
+  display: inline-block;
+}
+
+.top .content .info .inner {
+  margin-left: 12px;
+  text-align: left;
+}
+
+.top .content .info .inner .metadata {
+  margin-top: -6px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+@media (max-width: 991px) and (min-width: 767px) {
+  .top .content .info .inner .metadata p span {
+    display: none;
   }
 
   .authors-inner-row .info {
-    display: inline-block;
-    margin-left: 2px;
-    width: 60% !important;
-    overflow: hidden;
+    width: 100% !important;
   }
 
-  .authors-inner-row .info .bio {
-    opacity: .8;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .authors-inner-row .metadata {
+    display: none;
   }
+}
 
-  .authors-inner-row {
-    padding-top: 3px;
-    padding-left: 3px;
-    padding-bottom: 0;
-    margin-top: -1px;
-    overflow: hidden;
-    width: 100%;
+@media (max-width: 392px) {
+  .authors-inner-row .metadata {
+    display: none;
   }
+}
 
-  .authors-inner-row .avatar-img {
-    width: 36px;
-    height: 36px;
-  }
+.top .content .info .inner * {
+  margin: 0px;
+}
 
-  .authors {
-    margin-top: -5px;
-  }
+.top .author {
+  display: inline-block;
+}
 
-  .authors-outer {
-    margin-left: 6px;
-    margin-right: 6px;
-    margin-top: 8px;
-  }
+.top .content .author .avatar-img {
+  width: 95px;
+  height: 95px;
+}
 
-  .top .identifier {
-    font-size: 22px;
-    font-weight: 600;
-    margin-top: -6px;
-    margin-bottom: 0;
-  }
+.top .content .info .nickname {
+  font-size: 26px;
+  font-weight: 500;
+}
 
-  .top .content {
-    margin-bottom: 8px;
-    white-space: nowrap;
-  }
+.avatar-img {
+  border-radius: 50%;
+}
 
-  .top .content .info {
-    display: inline-block;
-  }
+.top-contributors {
+  padding: 12px;
+  margin: 0;
+}
 
-  .top .content .info .inner {
-    margin-left: 12px;
-    text-align: left;
-  }
+.divider {
+  margin: 0;
+}
 
-  .top .content .info .inner .metadata {
-    margin-top: -6px;
-    font-size: 14px;
-    opacity: .7;
-  }
+.outer {
+  height: 92%;
+  width: 100%;
+}
 
-  @media (max-width: 991px) and (min-width: 767px) {
-    .top .content .info .inner .metadata p span {
-      display: none
-    }
+.no-wrap {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
-    .authors-inner-row .info {
-      width: 100% !important;
-    }
+.sub-no-margin * {
+  margin: 0;
+}
 
-    .authors-inner-row .metadata {
-      display: none;
-    }
-  }
+.colored {
+  color: orange;
+}
 
-  @media (max-width: 392px) {
-    .authors-inner-row .metadata {
-      display: none;
-    }
-  }
-
-  .top .content .info .inner * {
-    margin: 0px
-  }
-
-  .top .author {
-    display: inline-block;
-  }
-
-  .top .content .author .avatar-img {
-    width: 95px;
-    height: 95px;
-  }
-
-  .top .content .info .nickname {
-    font-size: 26px;
-    font-weight: 500;
-  }
-
-  .avatar-img {
-    border-radius: 50%;
-  }
-
-  .top-contributors {
-    padding: 12px;
-    margin: 0;
-  }
-
-  .divider {
-    margin: 0
-  }
-
-  .outer {
-    height: 92%;
-    width: 100%;
-  }
-
-  .no-wrap {
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-
-  .sub-no-margin * {
-    margin: 0;
-  }
-
-  .colored {
-    color: orange
-  }
-
-  .top {
-    text-align: center;
-    border-radius: 6px;
-  }
-
+.top {
+  text-align: center;
+  border-radius: 6px;
+}
 </style>
 
 <script>
-  import {
-    FakeData
-  } from '../utils/utils'
+import { FakeData } from "../utils/utils";
 
-  export default {
-    data: function () {
-      var _ = require('lodash')
-      let author = FakeData.author
-      let authorArray = Array()
-      let data = {}
-      author.joinTime = '2014-12-23'
-      author.counter = {}
-      author.counter['total-articles'] = 23
-      author.counter.influence = 4930
+export default {
+  data: function() {
+    var _ = require("lodash");
+    let author = FakeData.author;
+    let authorArray = Array();
+    let data = {};
+    author.joinTime = "2014-12-23";
+    author.counter = {};
+    author.counter["total-articles"] = 23;
+    author.counter.influence = 4930;
 
-      data.top = _.cloneDeep(author)
+    data.top = _.cloneDeep(author);
 
-      for (let i = 0; i < 4; i++) {
-        author.order = i
-        authorArray.push(_.cloneDeep(author))
-      }
-      authorArray[2].nickname = "6alpha"
-      data.authors = []
-      data.authors = authorArray
-      return {
-        data: data
-      }
+    for (let i = 0; i < 4; i++) {
+      author.order = i;
+      authorArray.push(_.cloneDeep(author));
     }
+    authorArray[2].nickname = "6alpha";
+    data.authors = [];
+    data.authors = authorArray;
+    return {
+      data: data
+    };
   }
-
+};
 </script>

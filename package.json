@@ -16,7 +16,7 @@
     "geopattern": "^1.2.3",
     "highlight.js": "^9.12.0",
     "lodash": "^4.17.5",
-    "semantic-ui": "^2.3.1",
+    "semantic-ui": "^2.3.3",
     "tui-editor": "^1.1.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
@@ -33,6 +33,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "barba.js": "^1.0.0",
     "chalk": "^2.0.1",
+    "compression-webpack-plugin": "^1.1.11",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^3.0.0",

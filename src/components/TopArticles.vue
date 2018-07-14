@@ -56,150 +56,148 @@
 </template>
 
 <style scoped>
-  .articles .article .content .nickname {
-    font-size: 16px;
-    color: rgba(0, 0, 0, .8);
-  }
+.articles .article .content .nickname {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+}
 
-  .articles .article .content p {
-    font-size: 16px;
-  }
+.articles .article .content p {
+  font-size: 16px;
+}
 
-  .articles .article .identifier {
-    display: inline-block;
-    font-size: 24px;
-    margin-right: 6px;
-  }
+.articles .article .identifier {
+  display: inline-block;
+  font-size: 24px;
+  margin-right: 6px;
+}
 
-  .articles .article .content {
-    display: inline-block;
-  }
+.articles .article .content {
+  display: inline-block;
+}
 
-  .articles .article .metadata {
-    float: right;
-  }
+.articles .article .metadata {
+  float: right;
+}
 
-  .articles .article {
-    margin-top: 4px;
-    height: 44px;
-  }
+.articles .article {
+  margin-top: 4px;
+  height: 44px;
+}
 
-  .top .content .metadata .hate {
-    margin-left: 6px;
-  }
+.top .content .metadata .hate {
+  margin-left: 6px;
+}
 
-  .top .content .title {
-    font-size: 26px;
-    font-weight: 500;
-    margin: 0;
-  }
+.top .content .title {
+  font-size: 26px;
+  font-weight: 500;
+  margin: 0;
+}
 
-  .top .content .author {
-    display: inline-block;
-    position: relative;
-    left: -4px;
-    bottom: -4px;
-    margin-left: 4px;
-  }
+.top .content .author {
+  display: inline-block;
+  position: relative;
+  left: -4px;
+  bottom: -4px;
+  margin-left: 4px;
+}
 
-  .top .content .author .nickname {
-    font-size: 18px;
-    color: rgba(0, 0, 0, .8);
-  }
+.top .content .author .nickname {
+  font-size: 22px;
+  color: rgba(0, 0, 0, 0.7);
+}
 
-  .top .content {
-    margin-top: 4px;
-    text-align: left;
-    width: 80%;
-    max-width: 100%;
-    margin: 0 auto;
-  }
+.top .content {
+  text-align: left;
+  width: 80%;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-top: 8px;
+}
 
-  .top .content-outer {
-    width: 100%;
-    margin-top: -14px;
-  }
+.top .content-outer {
+  width: 100%;
+  margin-top: -14px;
+}
 
-  .top .identifier {
-    position: relative;
-    left: -4px;
-    top: 12px;
-    font-size: 38px;
-    font-weight: 500;
-  }
+.top .identifier {
+  position: relative;
+  left: -4px;
+  top: 12px;
+  font-size: 38px;
+  font-weight: 500;
+}
 
-  .avatar-img {
-    border-radius: 50%;
-  }
+.avatar-img {
+  border-radius: 50%;
+}
 
-  .sub-no-margin * {
-    margin: 0;
-  }
+.sub-no-margin * {
+  margin: 0;
+}
 
-  .colored {
-    color: var(--theme-color) !important;
-  }
+.colored,
+.colored * {
+  color: var(--theme-color) !important;
+}
 
-  .outer {
-    height: 92%;
-    width: 100%;
-    padding: 14px;
-  }
+.outer {
+  height: 92%;
+  width: 100%;
+  padding: 14px;
+  border-top: 3px solid var(--theme-color);
+}
 
-  .article .content {
-    opacity: .8;
-  }
+.article .content {
+  opacity: 0.8;
+}
 
-  .article .content:hover {
-    opacity: 1;
-  }
+.article .content:hover {
+  opacity: 1;
+}
 
-  .article {
-    transition: .1s ease-in-out;
-  }
+.article {
+  transition: 0.1s ease-in-out;
+}
 
-  .article:hover {
-    transform: scale(1.03);
-  }
+.article:hover {
+  transform: scale(1.03);
+}
 
-  .metadata * {
-    color: rgba(0, 0, 0, 0.7);
-  }
+.metadata * {
+  color: rgba(0, 0, 0, 0.7);
+}
 
-  * {
-    color: black;
-  }
-
+* {
+  color: black;
+}
 </style>
 
 <script>
-  import {
-    FakeData
-  } from '../utils/utils'
+import { FakeData } from "../utils/utils";
 
-  export default {
-    data: function () {
-      let articleArray = new Array()
-      let articles = {}
-      for (let i = 0; i < 4; i++) {
-        let thisArticle = {}
-        thisArticle.order = i
-        thisArticle.article = FakeData.article
-        thisArticle.article.counter = {}
-        thisArticle.article.counter.like = 346
-        thisArticle.article.counter.hate = 4
-        thisArticle.author = FakeData.author
-        articleArray.push(thisArticle)
-      }
-      articles.top = {}
-      articles.top.author = FakeData.author
-      articles.top.article = FakeData.article
-      articles.top.article.counter = {}
-      articles.top.article.counter.like = 346
-      articles.top.article.counter.hate = 4
-      articles.articles = articleArray
-      return articles
+export default {
+  data: function() {
+    let articleArray = new Array();
+    let articles = {};
+    for (let i = 0; i < 4; i++) {
+      let thisArticle = {};
+      thisArticle.order = i;
+      thisArticle.article = FakeData.article;
+      thisArticle.article.counter = {};
+      thisArticle.article.counter.like = 346;
+      thisArticle.article.counter.hate = 4;
+      thisArticle.author = FakeData.author;
+      articleArray.push(thisArticle);
     }
+    articles.top = {};
+    articles.top.author = FakeData.author;
+    articles.top.article = FakeData.article;
+    articles.top.article.counter = {};
+    articles.top.article.counter.like = 346;
+    articles.top.article.counter.hate = 4;
+    articles.articles = articleArray;
+    return articles;
   }
-
+};
 </script>
